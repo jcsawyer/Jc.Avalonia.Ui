@@ -39,6 +39,7 @@
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             Height="35"
+                                            Padding="0 0 35 0"
                                             HorizontalAlignment="Stretch"
                                             VerticalAlignment="Stretch"
                                             Background="Transparent">

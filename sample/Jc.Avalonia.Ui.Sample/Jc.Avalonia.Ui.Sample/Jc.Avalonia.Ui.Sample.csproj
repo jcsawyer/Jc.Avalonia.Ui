@@ -22,6 +22,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Jc.Avalonia.Ui.Extensions.DependencyInjection\Jc.Avalonia.Ui.Extensions.DependencyInjection.csproj" />
+      <ProjectReference Include="..\..\..\Jc.Avalonia.Ui.Fonts\Jc.Avalonia.Ui.Fonts.csproj" />
       <ProjectReference Include="..\..\..\Jc.Avalonia.Ui\Jc.Avalonia.Ui.csproj" />
     </ItemGroup>
 </Project>

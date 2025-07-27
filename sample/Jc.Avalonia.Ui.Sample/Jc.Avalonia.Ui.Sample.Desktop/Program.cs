@@ -1,6 +1,7 @@
 ﻿using System;
 using Avalonia;
 using Avalonia.ReactiveUI;
+using Jc.Avalonia.Ui.Fonts;
 
 namespace Jc.Avalonia.Ui.Sample.Desktop;
 
@@ -17,7 +18,7 @@ sealed class Program
     public static AppBuilder BuildAvaloniaApp()
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
-            .WithInterFont()
+            .WithJcFonts()
             .LogToTrace()
             .UseReactiveUI();
 }

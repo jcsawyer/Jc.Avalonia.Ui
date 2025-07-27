@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jc.Avalonia.Ui.Sample.Brows
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jc.Avalonia.Ui.Extensions.DependencyInjection", "Jc.Avalonia.Ui.Extensions.DependencyInjection\Jc.Avalonia.Ui.Extensions.DependencyInjection.csproj", "{8183A2D6-3C6E-4AA5-8E4F-EB70A795AB9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jc.Avalonia.Ui.Fonts", "Jc.Avalonia.Ui.Fonts\Jc.Avalonia.Ui.Fonts.csproj", "{DD79BF94-8A5B-4C87-9BA9-B7B94AEBD04F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{8183A2D6-3C6E-4AA5-8E4F-EB70A795AB9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8183A2D6-3C6E-4AA5-8E4F-EB70A795AB9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8183A2D6-3C6E-4AA5-8E4F-EB70A795AB9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD79BF94-8A5B-4C87-9BA9-B7B94AEBD04F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD79BF94-8A5B-4C87-9BA9-B7B94AEBD04F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD79BF94-8A5B-4C87-9BA9-B7B94AEBD04F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD79BF94-8A5B-4C87-9BA9-B7B94AEBD04F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A5AA4D06-68C6-4A40-954C-2EF8AC4AC087} = {AF52D08A-CC70-4D26-B333-135641F79641}
