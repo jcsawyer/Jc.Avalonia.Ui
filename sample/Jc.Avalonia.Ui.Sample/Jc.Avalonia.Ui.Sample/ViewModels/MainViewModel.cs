@@ -1,8 +1,26 @@
-﻿namespace Jc.Avalonia.Ui.Sample.ViewModels;
+﻿using System;
+using System.Windows.Input;
+using Jc.Avalonia.Ui.Navigation;
+using Jc.Avalonia.Ui.Sample.Views;
+using ReactiveUI;
+
+namespace Jc.Avalonia.Ui.Sample.ViewModels;
 
 public class MainViewModel : ViewModelBase
 {
-#pragma warning disable CA1822 // Mark members as static
-    public string Greeting => "Welcome to Avalonia!";
-#pragma warning restore CA1822 // Mark members as static
+    private readonly INavigationManager _navigationManager;
+
+    public ICommand NavigateCommand { get; set; }
+    
+    public MainViewModel(INavigationManager navigationManager)
+    {
+        _navigationManager = navigationManager ?? throw new ArgumentNullException(nameof(navigationManager));
+        
+        NavigateCommand = ReactiveCommand.Create(Navigate);
+    }
+
+    private void Navigate()
+    {
+        _navigationManager.NavigateTo(new UserControl1(), NavigationMethod.Clear);
+    }
 }
