@@ -8,7 +8,7 @@ using Avalonia.VisualTree;
 
 namespace Jc.Avalonia.Ui;
 
-public partial class Sheet : UserControl
+internal partial class Sheet : UserControl
 {
     private Point _dragStart;
     private double _initialOffsetY;
@@ -171,5 +171,10 @@ public partial class Sheet : UserControl
 
         Shell.GetShell().IsDialogOpen = !(offset > dismissThreshold);
         IsOpen = !(offset > dismissThreshold);
+    }
+    
+    public static void OpenSheet(Control control)
+    {
+        Shell.OpenSheet();
     }
 }

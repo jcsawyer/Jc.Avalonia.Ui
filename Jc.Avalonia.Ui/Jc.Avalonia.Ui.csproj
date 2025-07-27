@@ -20,7 +20,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Animations\" />
+      <Compile Update="Navigation\NavigationRoot.axaml.cs">
+        <DependentUpon>NavigationRoot.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 
 </Project>

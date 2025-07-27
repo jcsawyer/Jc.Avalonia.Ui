@@ -4,6 +4,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.VisualTree;
+using Jc.Avalonia.Ui.Navigation;
 
 namespace Jc.Avalonia.Ui;
 
@@ -27,9 +28,20 @@ public partial class Shell : UserControl
     {
         base.OnLoaded(e);
         var topLevel = TopLevel.GetTopLevel(this);
+        topLevel.BackRequested += TopLevelOnBackRequested;
         topLevel.SizeChanged += TopLevelOnSizeChanged;
         Width = topLevel.Bounds.Width;
         Height = topLevel.Bounds.Height;
+    }
+
+    private void TopLevelOnBackRequested(object? sender, RoutedEventArgs e)
+    {
+        if (IsDialogOpen)
+        {
+            CloseSheet();
+        }
+
+        NavigationRoot.PopPage();
     }
 
     private void TopLevelOnSizeChanged(object? sender, SizeChangedEventArgs e)
@@ -49,7 +61,7 @@ public partial class Shell : UserControl
         base.OnUnloaded(e);
     }
     
-    public static void OpenSheet()
+    internal static void OpenSheet()
     {
         var shell = GetShell();
         shell.IsDialogOpen = true;
@@ -57,7 +69,7 @@ public partial class Shell : UserControl
         sheet.IsOpen = true;
     }
     
-    private static void CloseSheet()
+    internal static void CloseSheet()
     {
         var shell = GetShell();
         shell.IsDialogOpen = false;

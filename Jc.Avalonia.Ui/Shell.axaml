@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ui="clr-namespace:Jc.Avalonia.Ui"
+             xmlns:navigation="clr-namespace:Jc.Avalonia.Ui.Navigation"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Jc.Avalonia.Ui.Shell">
     <UserControl.Styles>
@@ -18,14 +19,14 @@
                                     <DoubleTransition Duration="0:0:0.25" Property="Opacity" />
                                 </Transitions>
                             </Border.Transitions>
-                            <ui:NavigationRoot>
-                                <ui:NavigationRoot.Transitions>
+                            <navigation:NavigationRoot>
+                                <navigation:NavigationRoot.Transitions>
                                     <Transitions>
                                         <EffectTransition Property="Effect"
                                                           Duration="0:0:0.25" />
                                     </Transitions>
-                                </ui:NavigationRoot.Transitions>
-                            </ui:NavigationRoot>
+                                </navigation:NavigationRoot.Transitions>
+                            </navigation:NavigationRoot>
                         </Border>
                         <!-- Shell Underlay Mask -->
                         <Grid

@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Jc.Avalonia.Ui.Navigation;
 
 namespace Jc.Avalonia.Ui.Sample.Views;
 
@@ -12,17 +13,8 @@ public partial class MainView : UserControl
 
     protected override void OnLoaded(RoutedEventArgs e)
     {
-        NavigationRoot.PushPage(new UserControl1());
+        var nav = new NavigationManager();
+        nav.NavigateTo(new UserControl1(), NavigationMethod.Clear);
         base.OnLoaded(e);
     }
-    
-    // private void OnShowSheetClicked(object? sender, RoutedEventArgs e)
-    // {
-    //     MySheet.IsOpen = true;
-    // }
-    //
-    // private void OnCloseSheetClicked(object? sender, RoutedEventArgs e)
-    // {
-    //     MySheet.IsOpen = false;
-    // }
 }
