@@ -1,24 +1,15 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.VisualTree;
+using Jc.Avalonia.Ui.Dialogs;
 using Jc.Avalonia.Ui.Navigation;
 
 namespace Jc.Avalonia.Ui;
 
 public partial class Shell : UserControl
 {
-    public static readonly StyledProperty<bool> IsDialogOpenProperty = AvaloniaProperty.Register<Shell, bool>(
-        nameof(IsDialogOpen));
-
-    public bool IsDialogOpen
-    {
-        get => GetValue(IsDialogOpenProperty);
-        set => SetValue(IsDialogOpenProperty, value);
-    }
-
     public Shell()
     {
         InitializeComponent();
@@ -29,56 +20,18 @@ public partial class Shell : UserControl
         base.OnLoaded(e);
         var topLevel = TopLevel.GetTopLevel(this);
         topLevel.BackRequested += TopLevelOnBackRequested;
-        topLevel.SizeChanged += TopLevelOnSizeChanged;
-        Width = topLevel.Bounds.Width;
-        Height = topLevel.Bounds.Height;
     }
 
     private void TopLevelOnBackRequested(object? sender, RoutedEventArgs e)
     {
-        if (IsDialogOpen)
+        if (DialogHost.CloseAllDialogs())
         {
-            CloseSheet();
             e.Handled = true;
             return;
         }
 
         NavigationRoot.PopPage();
         e.Handled = true;
-    }
-
-    private void TopLevelOnSizeChanged(object? sender, SizeChangedEventArgs e)
-    {
-        var topLevel = TopLevel.GetTopLevel(this);
-        Width = topLevel.Bounds.Width;
-        Height = topLevel.Bounds.Height;
-        var shell = GetShell();
-        var sheet = shell.GetVisualDescendants().OfType<Sheet>().Single();
-        sheet.IsOpen = sheet.IsOpen;
-    }
-
-    protected override void OnUnloaded(RoutedEventArgs e)
-    {
-        var topLevel = TopLevel.GetTopLevel(this);
-        topLevel.SizeChanged -= TopLevelOnSizeChanged;
-        base.OnUnloaded(e);
-    }
-    
-    internal static void OpenSheet(Control control)
-    {
-        var shell = GetShell();
-        shell.IsDialogOpen = true;
-        var sheet = shell.GetVisualDescendants().OfType<Sheet>().Single();
-        sheet.IsOpen = true;
-        sheet.Content = control;
-    }
-    
-    internal static void CloseSheet()
-    {
-        var shell = GetShell();
-        shell.IsDialogOpen = false;
-        var sheet = shell.GetVisualDescendants().OfType<Sheet>().Single();
-        sheet.IsOpen = false;
     }
 
     internal static Shell GetShell()
@@ -103,10 +56,5 @@ public partial class Shell : UserControl
         }
 
         return shell;
-    }
-
-    private void ShellMask_OnPointerPressed(object? sender, PointerPressedEventArgs e)
-    {
-        CloseSheet();
     }
 }

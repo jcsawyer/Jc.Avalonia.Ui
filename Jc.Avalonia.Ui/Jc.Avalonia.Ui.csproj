@@ -10,6 +10,7 @@
 
     <ItemGroup>
       <PackageReference Include="Avalonia" Version="11.3.2" />
+      <PackageReference Include="Xaml.Behaviors.Interactivity" Version="11.3.2" />
     </ItemGroup>
 
     <ItemGroup>
@@ -24,6 +25,14 @@
         <DependentUpon>NavigationRoot.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
+      <Compile Update="Dialogs\Sheet.axaml.cs">
+        <DependentUpon>Sheet.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Converters\" />
     </ItemGroup>
 
 </Project>

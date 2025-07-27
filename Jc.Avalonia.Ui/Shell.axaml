@@ -4,12 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ui="clr-namespace:Jc.Avalonia.Ui"
              xmlns:navigation="clr-namespace:Jc.Avalonia.Ui.Navigation"
+             xmlns:dialogs="clr-namespace:Jc.Avalonia.Ui.Dialogs"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Jc.Avalonia.Ui.Shell">
     <UserControl.Styles>
         <Style Selector="ui|Shell">
-            <Setter Property="Height" Value="400"></Setter>
-
             <Setter Property="Template">
                 <ControlTemplate>
                     <Grid>
@@ -29,35 +28,11 @@
                                 <ContentControl Content="{TemplateBinding Content}" />
                             </navigation:NavigationRoot>
                         </Border>
-                        <!-- Shell Underlay Mask -->
-                        <Grid
-                            Name="ShellMask"
-                            Background="#000000"
-                            IsHitTestVisible="False"
-                            Opacity="0"
-                            PointerPressed="ShellMask_OnPointerPressed">
-                            <Grid.Transitions>
-                                <Transitions>
-                                    <DoubleTransition Property="Opacity" Duration="0:0:0.25"></DoubleTransition>
-                                </Transitions>
-                            </Grid.Transitions>
-                        </Grid>
-                        <!-- Sheet -->
-                        <ui:Sheet
-                            Name="Sheet"
-                            SheetHeight="{TemplateBinding Height}"
-                            IsOpen="{TemplateBinding IsDialogOpen}"></ui:Sheet>
+                        <!-- Dialog Host -->
+                        <dialogs:DialogHost />
                     </Grid>
                 </ControlTemplate>
             </Setter>
-        </Style>
-        <Style Selector="ui|Shell[IsDialogOpen=True] Grid#ShellMask">
-            <Setter Property="Opacity" Value="0.3" />
-            <Setter Property="IsHitTestVisible" Value="True" />
-        </Style>
-        <Style Selector="ui|Shell[IsDialogOpen=False] Grid#ShellMask">
-            <Setter Property="Opacity" Value="0" />
-            <Setter Property="IsHitTestVisible" Value="False" />
         </Style>
     </UserControl.Styles>
 </UserControl>

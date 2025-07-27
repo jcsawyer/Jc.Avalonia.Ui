@@ -1,0 +1,51 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dialogs="clr-namespace:Jc.Avalonia.Ui.Dialogs"
+             xmlns:ui="clr-namespace:Jc.Avalonia.Ui"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Jc.Avalonia.Ui.Dialogs.DialogHost">
+
+    <Design.PreviewWith>
+        <ui:Shell>
+            <Grid />
+        </ui:Shell>
+    </Design.PreviewWith>
+
+    <UserControl.Styles>
+        <Style Selector="dialogs|DialogHost">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Grid>
+                        <!-- Underlay Mask -->
+                        <Grid
+                            Name="ShellMask"
+                            Background="#000000"
+                            IsHitTestVisible="False"
+                            Opacity="0"
+                            PointerPressed="ShellMask_OnPointerPressed">
+                            <Grid.Transitions>
+                                <Transitions>
+                                    <DoubleTransition Property="Opacity" Duration="0:0:0.25"></DoubleTransition>
+                                </Transitions>
+                            </Grid.Transitions>
+                        </Grid>
+                        <!-- Sheet -->
+                        <dialogs:Sheet Name="SheetRoot" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+
+        <!-- Underlay Mask Styles -->
+        <Style Selector="dialogs|DialogHost[IsDialogOpen=True] Grid#ShellMask">
+            <Setter Property="Opacity" Value="0.3" />
+            <Setter Property="IsHitTestVisible" Value="True" />
+        </Style>
+        <Style Selector="dialogs|DialogHost[IsDialogOpen=False] Grid#ShellMask">
+            <Setter Property="Opacity" Value="0" />
+            <Setter Property="IsHitTestVisible" Value="False" />
+        </Style>
+    </UserControl.Styles>
+</UserControl>

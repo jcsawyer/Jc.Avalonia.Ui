@@ -2,12 +2,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:ui="clr-namespace:Jc.Avalonia.Ui"
+             xmlns:dialogs="clr-namespace:Jc.Avalonia.Ui.Dialogs"
+             xmlns:behaviors="clr-namespace:Jc.Avalonia.Ui.Behaviors"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Jc.Avalonia.Ui.Sheet">
+             x:Class="Jc.Avalonia.Ui.Dialogs.Sheet">
     <UserControl.Styles>
-        <Style Selector="ui|Sheet">
-            <Setter Property="IsOpen" Value="False"></Setter>
+        <Style Selector="dialogs|Sheet">
+            <!-- <Setter Property="IsOpen" Value="False"></Setter> -->
             <Setter Property="Template">
                 <ControlTemplate>
                     <Border Padding="0 100 0 0">
@@ -40,10 +41,10 @@
                                             Height="35"
                                             HorizontalAlignment="Stretch"
                                             VerticalAlignment="Stretch"
-                                            Background="Transparent"
-                                            PointerPressed="SheetTab_OnPointerPressed"
-                                            PointerMoved="SheetTab_OnPointerMoved"
-                                            PointerReleased="SheetTab_OnPointerReleased">
+                                            Background="Transparent">
+                                            <Interaction.Behaviors>
+                                                <behaviors:SnapBackDragBehavior />
+                                            </Interaction.Behaviors>
                                             <Border
                                                 Background="#20000000"
                                                 Width="50"

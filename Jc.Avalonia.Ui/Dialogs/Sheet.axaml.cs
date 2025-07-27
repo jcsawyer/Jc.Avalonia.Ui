@@ -1,19 +1,14 @@
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
 
-namespace Jc.Avalonia.Ui;
+namespace Jc.Avalonia.Ui.Dialogs;
 
 internal partial class Sheet : UserControl
 {
-    private Point _dragStart;
-    private double _initialOffsetY;
-    private bool _isDragging;
-
     public static readonly StyledProperty<double> SheetHeightProperty = AvaloniaProperty.Register<Sheet, double>(
         nameof(SheetHeight), coerce: (element, value) =>
         {
@@ -39,9 +34,9 @@ internal partial class Sheet : UserControl
         get => GetValue(ContentHeightProperty);
         set => SetValue(ContentHeightProperty, value);
     }
-    
-    public static readonly StyledProperty<bool> IsOpenProperty =
-        AvaloniaProperty.Register<Sheet, bool>(nameof(IsOpen));
+
+    public static readonly StyledProperty<bool> IsOpenProperty = AvaloniaProperty.Register<Sheet, bool>(
+        nameof(IsOpen));
 
     public bool IsOpen
     {
@@ -52,6 +47,9 @@ internal partial class Sheet : UserControl
             _animtationTimer.Start();
         }
     }
+
+    private bool IsOpening { get; set; }
+    private bool IsClosing { get; set; }
 
     private readonly DispatcherTimer _animtationTimer;
 
@@ -82,7 +80,7 @@ internal partial class Sheet : UserControl
 
         ((TranslateTransform)sheet.RenderTransform!).Y = SheetHeight;
         _animtationTimer.Tick += AnimateTick;
-        
+
         ContentHeight = SheetHeight - (SheetHeight / 5) - 35;
     }
 
@@ -103,7 +101,7 @@ internal partial class Sheet : UserControl
                 _animtationTimer.Stop();
                 return;
             }
-            
+
             if (transform.Y > SheetHeight / 5)
             {
                 transform.Y -= SheetHeight / AnimationTotalTicks;
@@ -111,6 +109,11 @@ internal partial class Sheet : UserControl
                 {
                     transform.Y = SheetHeight / 5;
                     _animtationTimer.Stop();
+                    if (IsOpening)
+                    {
+                        DialogManager.OnSheetOpened?.Invoke(this, EventArgs.Empty);
+                        IsOpening = false;
+                    }
                 }
             }
             else
@@ -126,7 +129,7 @@ internal partial class Sheet : UserControl
                 _animtationTimer.Stop();
                 return;
             }
-            
+
             if (transform.Y < sheet.Height)
             {
                 transform.Y += sheet.Height / AnimationTotalTicks;
@@ -134,6 +137,11 @@ internal partial class Sheet : UserControl
                 {
                     transform.Y = sheet.Height;
                     _animtationTimer.Stop();
+                    if (IsClosing)
+                    {
+                        DialogManager.OnSheetClosed?.Invoke(this, EventArgs.Empty);
+                        IsClosing = false;
+                    }
                 }
             }
             else
@@ -143,72 +151,25 @@ internal partial class Sheet : UserControl
         }
     }
 
-    private void SheetTab_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+    public void Open<TContent>(TContent content) where TContent : Control
     {
-        var sheet = this.GetVisualDescendants().OfType<Border>().FirstOrDefault(x => x.Name == "Sheet");
-        _dragStart = e.GetPosition(this);
-        if (sheet?.RenderTransform is not TranslateTransform translate)
-        {
-            return;
-        }
-        _initialOffsetY = translate.Y;
-        _isDragging = true;
+        DialogManager.OnSheetOpening?.Invoke(this, EventArgs.Empty);
+        Content = content;
+        IsOpening = true;
+        IsOpen = true;
     }
 
-    private void SheetTab_OnPointerMoved(object? sender, PointerEventArgs e)
+    public bool Close()
     {
-        if (!_isDragging)
+        if (IsOpen || IsOpening)
         {
-            return;
-        }
-        
-        var sheet = this.GetVisualDescendants().OfType<Border>().FirstOrDefault(x => x.Name == "Sheet");
-        var currentPos = e.GetPosition(this);
-        var deltaY = currentPos.Y - _dragStart.Y;
-
-        if (sheet?.RenderTransform is not TranslateTransform translate)
-        {
-            return;
+            DialogManager.OnSheetClosing?.Invoke(this, EventArgs.Empty);
+            IsOpen = false;
+            IsClosing = true;
+            IsOpening = false;
+            return true;
         }
 
-        if (deltaY < 0)
-        {
-            return;
-        }
-        
-        var newPos = _initialOffsetY + deltaY;
-        if (newPos < _initialOffsetY)
-        {
-            newPos = _initialOffsetY;
-        }
-
-        translate.Y = newPos;
-    }
-
-    private void SheetTab_OnPointerReleased(object? sender, PointerReleasedEventArgs e)
-    {
-        if (!_isDragging)
-        {
-            return;
-        }
-
-        var sheet = this.GetVisualDescendants().OfType<Border>().FirstOrDefault(x => x.Name == "Sheet");
-        _isDragging = false;
-        
-        if (sheet?.RenderTransform is not TranslateTransform translate)
-        {
-            return;
-        }
-
-        var dismissThreshold = _initialOffsetY * 3;
-        var offset = translate.Y;
-
-        Shell.GetShell().IsDialogOpen = !(offset > dismissThreshold);
-        IsOpen = !(offset > dismissThreshold);
-    }
-    
-    public static void OpenSheet(Control control)
-    {
-        Shell.OpenSheet(control);
+        return false;
     }
 }

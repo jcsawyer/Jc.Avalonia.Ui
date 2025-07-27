@@ -1,4 +1,3 @@
-using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
 
 namespace Jc.Avalonia.Ui;
