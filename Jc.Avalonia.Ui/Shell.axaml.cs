@@ -39,6 +39,7 @@ public partial class Shell : UserControl
         if (IsDialogOpen)
         {
             CloseSheet();
+            return;
         }
 
         NavigationRoot.PopPage();
@@ -61,12 +62,13 @@ public partial class Shell : UserControl
         base.OnUnloaded(e);
     }
     
-    internal static void OpenSheet()
+    internal static void OpenSheet(Control control)
     {
         var shell = GetShell();
         shell.IsDialogOpen = true;
         var sheet = shell.GetVisualDescendants().OfType<Sheet>().Single();
         sheet.IsOpen = true;
+        sheet.Content = control;
     }
     
     internal static void CloseSheet()

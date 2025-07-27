@@ -175,6 +175,6 @@ internal partial class Sheet : UserControl
     
     public static void OpenSheet(Control control)
     {
-        Shell.OpenSheet();
+        Shell.OpenSheet(control);
     }
 }

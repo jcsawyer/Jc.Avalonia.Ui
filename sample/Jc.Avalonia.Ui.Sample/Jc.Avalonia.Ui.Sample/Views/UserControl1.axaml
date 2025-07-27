@@ -6,7 +6,7 @@
              x:Class="Jc.Avalonia.Ui.Sample.Views.UserControl1">
     <StackPanel Orientation="Vertical">
     <TextBlock>Welcome to Avalonia!</TextBlock>
-
+        <Button Click="Button3_OnClick">Go back</Button>
         <Button Click="Button_OnClick">Open Sheet!</Button>
         <Button Click="Button2_OnClick">Open Page 2!</Button>
     </StackPanel>

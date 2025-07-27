@@ -26,6 +26,7 @@
                                                           Duration="0:0:0.25" />
                                     </Transitions>
                                 </navigation:NavigationRoot.Transitions>
+                                <ContentControl Content="{TemplateBinding Content}" />
                             </navigation:NavigationRoot>
                         </Border>
                         <!-- Shell Underlay Mask -->

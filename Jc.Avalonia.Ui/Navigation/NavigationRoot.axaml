@@ -3,7 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:navigation="clr-namespace:Jc.Avalonia.Ui.Navigation"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Jc.Avalonia.Ui.Navigation.NavigationRoot">
     <UserControl.Styles>
         <Style Selector="navigation|NavigationRoot">
             <Setter Property="Template">

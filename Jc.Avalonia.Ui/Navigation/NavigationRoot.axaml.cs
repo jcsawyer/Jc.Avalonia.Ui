@@ -1,38 +1,51 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Controls.Templates;
+using Avalonia.Markup.Xaml;
 using Avalonia.VisualTree;
 
 namespace Jc.Avalonia.Ui.Navigation;
 
 internal partial class NavigationRoot : UserControl
 {
-    /// <summary>
-    /// The currently displayed page.
-    /// This is the page that is currently visible in the shell.
-    /// </summary>
+    public NavigationRoot()
+    {
+        InitializeComponent();
+    }
+
+    private void InitializeComponent()
+    {
+        AvaloniaXamlLoader.Load(this);
+    }
+
     public Control? CurrentPage;
-    
+
     /// <summary>
     /// Page navigation stack.
     /// </summary>
     public Stack<Control> Pages = new Stack<Control>();
-    
+
     public static void PopPage()
     {
         var navigationRoot = GetNavigationRoot();
-        
+
         if (navigationRoot.Pages.Count == 0)
         {
             return;
         }
-        
-        var page = navigationRoot.Pages.Pop();
-     
-        navigationRoot.CurrentPage = page;
-        navigationRoot.Content = page;
+
+        var content = navigationRoot.Pages.Pop();
+
+        navigationRoot.CurrentPage = content;
+        var transition = navigationRoot.GetTemplateChildren().OfType<TransitioningContentControl>()
+            .SingleOrDefault(x => x.Name == "Root");
+        if (transition is not null)
+        {
+            transition.Content = content;
+        }
     }
-    
+
     public static void PushPage(UserControl content, NavigationMethod method)
     {
         var navigationRoot = GetNavigationRoot();
@@ -51,12 +64,14 @@ internal partial class NavigationRoot : UserControl
                 {
                     navigationRoot.Pages.Pop();
                 }
+
                 break;
             case NavigationMethod.Replace:
                 if (navigationRoot.Pages.Count > 0)
                 {
                     navigationRoot.Pages.Pop();
                 }
+
                 navigationRoot.Pages.Push(content);
                 break;
             case NavigationMethod.Clear:
@@ -65,10 +80,16 @@ internal partial class NavigationRoot : UserControl
             default:
                 throw new ArgumentOutOfRangeException(nameof(method), method, null);
         }
+
         navigationRoot.CurrentPage = content;
-        navigationRoot.Content = content;
+        var transition = navigationRoot.GetTemplateChildren().OfType<TransitioningContentControl>()
+            .SingleOrDefault(x => x.Name == "Root");
+        if (transition is not null)
+        {
+            transition.Content = content;
+        }
     }
-    
+
     /// <summary>
     /// Gets the root <see cref="NavigationRoot"/> control from the visual tree.
     /// </summary>
@@ -79,17 +100,20 @@ internal partial class NavigationRoot : UserControl
         NavigationRoot? shell;
         try
         {
-            shell = ((ISingleViewApplicationLifetime)Application.Current!.ApplicationLifetime!).MainView!.GetVisualDescendants().OfType<NavigationRoot>().Single();
+            shell = ((ISingleViewApplicationLifetime)Application.Current!.ApplicationLifetime!).MainView!
+                .GetVisualDescendants().OfType<NavigationRoot>().Single();
         }
         catch
         {
             try
             {
-                shell = ((IClassicDesktopStyleApplicationLifetime)Application.Current!.ApplicationLifetime!).MainWindow!.GetVisualDescendants().OfType<NavigationRoot>().Single();
+                shell = ((IClassicDesktopStyleApplicationLifetime)Application.Current!.ApplicationLifetime!).MainWindow!
+                    .GetVisualDescendants().OfType<NavigationRoot>().Single();
             }
             catch
             {
-                throw new InvalidOperationException($"A single {nameof(NavigationRoot)} control must exist in the visual tree.");
+                throw new InvalidOperationException(
+                    $"A single {nameof(NavigationRoot)} control must exist in the visual tree.");
             }
         }
 

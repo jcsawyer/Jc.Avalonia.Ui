@@ -51,6 +51,11 @@
                                                 CornerRadius="2.5">
                                             </Border>
                                         </Border>
+
+                                        <ContentControl 
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Content="{TemplateBinding Content}" />
                                     </Grid>
                                 </Border>
                             </Grid>
