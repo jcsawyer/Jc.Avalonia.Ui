@@ -24,7 +24,7 @@
                                     Background="White"
                                     HorizontalAlignment="Stretch"
                                     VerticalAlignment="Stretch"
-                                    Padding="15 0 15 15">
+                                    Padding="25 0 0 25">
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
@@ -48,14 +48,18 @@
                                                 Background="#20000000"
                                                 Width="50"
                                                 Height="5"
-                                                CornerRadius="2.5">
+                                                CornerRadius="2.5"
+                                                HorizontalAlignment="Center">
                                             </Border>
                                         </Border>
 
-                                        <ContentControl 
+                                        <ScrollViewer
                                             Grid.Row="1"
                                             Grid.Column="0"
-                                            Content="{TemplateBinding Content}" />
+                                            VerticalAlignment="Top"
+                                            Height="{TemplateBinding ContentHeight}">
+                                            <ContentControl Padding="0 0 25 25" Content="{TemplateBinding Content}" />
+                                        </ScrollViewer>
                                     </Grid>
                                 </Border>
                             </Grid>

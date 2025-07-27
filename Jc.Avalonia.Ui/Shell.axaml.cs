@@ -39,10 +39,12 @@ public partial class Shell : UserControl
         if (IsDialogOpen)
         {
             CloseSheet();
+            e.Handled = true;
             return;
         }
 
         NavigationRoot.PopPage();
+        e.Handled = true;
     }
 
     private void TopLevelOnSizeChanged(object? sender, SizeChangedEventArgs e)

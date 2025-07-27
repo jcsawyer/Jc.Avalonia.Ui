@@ -15,7 +15,15 @@ internal partial class Sheet : UserControl
     private bool _isDragging;
 
     public static readonly StyledProperty<double> SheetHeightProperty = AvaloniaProperty.Register<Sheet, double>(
-        nameof(SheetHeight));
+        nameof(SheetHeight), coerce: (element, value) =>
+        {
+            if (element is Sheet sheet)
+            {
+                sheet.ContentHeight = value - (value / 5) - 35;
+            }
+
+            return value;
+        });
 
     public double SheetHeight
     {
@@ -23,6 +31,15 @@ internal partial class Sheet : UserControl
         set => SetValue(SheetHeightProperty, value);
     }
 
+    public static readonly StyledProperty<double> ContentHeightProperty = AvaloniaProperty.Register<Sheet, double>(
+        nameof(ContentHeight));
+
+    public double ContentHeight
+    {
+        get => GetValue(ContentHeightProperty);
+        set => SetValue(ContentHeightProperty, value);
+    }
+    
     public static readonly StyledProperty<bool> IsOpenProperty =
         AvaloniaProperty.Register<Sheet, bool>(nameof(IsOpen));
 
@@ -65,6 +82,8 @@ internal partial class Sheet : UserControl
 
         ((TranslateTransform)sheet.RenderTransform!).Y = SheetHeight;
         _animtationTimer.Tick += AnimateTick;
+        
+        ContentHeight = SheetHeight - (SheetHeight / 5) - 35;
     }
 
     private void AnimateTick(object? sender, EventArgs e)
@@ -88,6 +107,11 @@ internal partial class Sheet : UserControl
             if (transform.Y > SheetHeight / 5)
             {
                 transform.Y -= SheetHeight / AnimationTotalTicks;
+                if (transform.Y < SheetHeight / 5)
+                {
+                    transform.Y = SheetHeight / 5;
+                    _animtationTimer.Stop();
+                }
             }
             else
             {
@@ -106,6 +130,11 @@ internal partial class Sheet : UserControl
             if (transform.Y < sheet.Height)
             {
                 transform.Y += sheet.Height / AnimationTotalTicks;
+                if (transform.Y > sheet.Height)
+                {
+                    transform.Y = sheet.Height;
+                    _animtationTimer.Stop();
+                }
             }
             else
             {
@@ -138,6 +167,11 @@ internal partial class Sheet : UserControl
         var deltaY = currentPos.Y - _dragStart.Y;
 
         if (sheet?.RenderTransform is not TranslateTransform translate)
+        {
+            return;
+        }
+
+        if (deltaY < 0)
         {
             return;
         }
