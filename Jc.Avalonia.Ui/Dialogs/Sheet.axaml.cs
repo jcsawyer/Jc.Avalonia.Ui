@@ -15,6 +15,16 @@ internal partial class Sheet : UserControl
             if (element is Sheet sheet)
             {
                 sheet.ContentHeight = value - (value / 5) - 35;
+                var sheetControl = sheet.GetVisualDescendants().OfType<Border>()
+                    .FirstOrDefault(x => x.Name == "Sheet");
+                if (sheetControl is { } sheetBorder && !sheet.IsOpen)
+                {
+                    var transform = (TranslateTransform)sheetBorder.RenderTransform;
+                    if (transform is not null)
+                    {
+                        transform.Y = value;
+                    }
+                }
             }
 
             return value;
@@ -53,7 +63,7 @@ internal partial class Sheet : UserControl
 
     private readonly DispatcherTimer _animtationTimer;
 
-    private static readonly TimeSpan AnimationFramerate = TimeSpan.FromMilliseconds(16);
+    private static readonly TimeSpan AnimationFramerate = TimeSpan.FromMilliseconds(8); // 120 FPS
 
     private static readonly TimeSpan AnimationDuration = TimeSpan.Parse("0:0:0.25");
     private int AnimationTotalTicks => (int)(AnimationDuration.TotalSeconds / AnimationFramerate.TotalSeconds);

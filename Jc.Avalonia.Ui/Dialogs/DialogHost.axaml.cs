@@ -10,8 +10,6 @@ internal partial class DialogHost : UserControl
 {
     private Size? _bounds;
 
-    public Control SheetContent { get; set; }
-
     public static readonly StyledProperty<bool> IsDialogOpenProperty = AvaloniaProperty.Register<DialogHost, bool>(
         nameof(IsDialogOpen));
     
@@ -48,7 +46,7 @@ internal partial class DialogHost : UserControl
 
     private void ShellMask_OnPointerPressed(object? sender, PointerPressedEventArgs e)
     {
-        CloseSheet();
+        CloseAllDialogs();
     }
 
     public static bool CloseAllDialogs()
