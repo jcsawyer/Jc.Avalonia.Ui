@@ -1,0 +1,63 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="clr-namespace:Jc.Avalonia.Ui"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Jc.Avalonia.Ui.Sheet">
+    <UserControl.Styles>
+        <Style Selector="ui|Sheet">
+            <Setter Property="IsOpen" Value="False"></Setter>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Padding="0 100 0 0">
+                        <Border
+                            Name="Sheet"
+                            Height="{TemplateBinding SheetHeight}"
+                            VerticalAlignment="Bottom">
+                            <Border.RenderTransform>
+                                <TranslateTransform Y="0" />
+                            </Border.RenderTransform>
+                            <Grid>
+                                <Border
+                                    CornerRadius="20, 20, 0, 0"
+                                    Background="White"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Padding="15 0 15 15">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Border
+                                            Name="SheetTab"
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Height="35"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch"
+                                            Background="Transparent"
+                                            PointerPressed="SheetTab_OnPointerPressed"
+                                            PointerMoved="SheetTab_OnPointerMoved"
+                                            PointerReleased="SheetTab_OnPointerReleased">
+                                            <Border
+                                                Background="#20000000"
+                                                Width="50"
+                                                Height="5"
+                                                CornerRadius="2.5">
+                                            </Border>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+    </UserControl.Styles>
+</UserControl>

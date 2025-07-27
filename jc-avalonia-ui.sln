@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jc.Avalonia.Ui", "Jc.Avalonia.Ui\Jc.Avalonia.Ui.csproj", "{C7546E50-AF89-499D-A7B1-92944274BB0C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{AF52D08A-CC70-4D26-B333-135641F79641}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jc.Avalonia.Ui.Sample", "sample\Jc.Avalonia.Ui.Sample\Jc.Avalonia.Ui.Sample\Jc.Avalonia.Ui.Sample.csproj", "{A5AA4D06-68C6-4A40-954C-2EF8AC4AC087}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jc.Avalonia.Ui.Sample.Android", "sample\Jc.Avalonia.Ui.Sample\Jc.Avalonia.Ui.Sample.Android\Jc.Avalonia.Ui.Sample.Android.csproj", "{25F2E24E-6F4F-4690-B669-043971B305FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jc.Avalonia.Ui.Sample.Desktop", "sample\Jc.Avalonia.Ui.Sample\Jc.Avalonia.Ui.Sample.Desktop\Jc.Avalonia.Ui.Sample.Desktop.csproj", "{60ABB6C4-F9D5-49CB-A481-724743E7021E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jc.Avalonia.Ui.Sample.iOS", "sample\Jc.Avalonia.Ui.Sample\Jc.Avalonia.Ui.Sample.iOS\Jc.Avalonia.Ui.Sample.iOS.csproj", "{BD2D8490-E93A-4DC3-9024-E8302150E767}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jc.Avalonia.Ui.Sample.Browser", "sample\Jc.Avalonia.Ui.Sample\Jc.Avalonia.Ui.Sample.Browser\Jc.Avalonia.Ui.Sample.Browser.csproj", "{02FC502A-D43A-417C-B2D2-B63DFF444202}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7546E50-AF89-499D-A7B1-92944274BB0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7546E50-AF89-499D-A7B1-92944274BB0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7546E50-AF89-499D-A7B1-92944274BB0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7546E50-AF89-499D-A7B1-92944274BB0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5AA4D06-68C6-4A40-954C-2EF8AC4AC087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5AA4D06-68C6-4A40-954C-2EF8AC4AC087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5AA4D06-68C6-4A40-954C-2EF8AC4AC087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5AA4D06-68C6-4A40-954C-2EF8AC4AC087}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25F2E24E-6F4F-4690-B669-043971B305FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25F2E24E-6F4F-4690-B669-043971B305FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25F2E24E-6F4F-4690-B669-043971B305FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25F2E24E-6F4F-4690-B669-043971B305FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60ABB6C4-F9D5-49CB-A481-724743E7021E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60ABB6C4-F9D5-49CB-A481-724743E7021E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60ABB6C4-F9D5-49CB-A481-724743E7021E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60ABB6C4-F9D5-49CB-A481-724743E7021E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD2D8490-E93A-4DC3-9024-E8302150E767}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD2D8490-E93A-4DC3-9024-E8302150E767}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD2D8490-E93A-4DC3-9024-E8302150E767}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD2D8490-E93A-4DC3-9024-E8302150E767}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02FC502A-D43A-417C-B2D2-B63DFF444202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02FC502A-D43A-417C-B2D2-B63DFF444202}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02FC502A-D43A-417C-B2D2-B63DFF444202}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02FC502A-D43A-417C-B2D2-B63DFF444202}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A5AA4D06-68C6-4A40-954C-2EF8AC4AC087} = {AF52D08A-CC70-4D26-B333-135641F79641}
+		{25F2E24E-6F4F-4690-B669-043971B305FC} = {AF52D08A-CC70-4D26-B333-135641F79641}
+		{60ABB6C4-F9D5-49CB-A481-724743E7021E} = {AF52D08A-CC70-4D26-B333-135641F79641}
+		{BD2D8490-E93A-4DC3-9024-E8302150E767} = {AF52D08A-CC70-4D26-B333-135641F79641}
+		{02FC502A-D43A-417C-B2D2-B63DFF444202} = {AF52D08A-CC70-4D26-B333-135641F79641}
+	EndGlobalSection
+EndGlobal

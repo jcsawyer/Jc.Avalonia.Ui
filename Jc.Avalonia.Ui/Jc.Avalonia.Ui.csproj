@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <PublishAot>true</PublishAot>
+        <IsTrimmable>true</IsTrimmable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Avalonia" Version="11.3.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <AvaloniaResource Include="**\*.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+        </AvaloniaResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Animations\" />
+    </ItemGroup>
+
+</Project>
