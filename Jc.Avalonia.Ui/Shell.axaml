@@ -8,7 +8,7 @@
              xmlns:converters="clr-namespace:Jc.Avalonia.Ui.Converters"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Jc.Avalonia.Ui.Shell"
-             TopLevel.AutoSafeAreaPadding="True">
+             TopLevel.AutoSafeAreaPadding="False">
     <UserControl.Styles>
         <Style Selector="ui|Shell">
             <Setter Property="Template">
@@ -49,7 +49,7 @@
             </navigation:NavigationRoot>
         </DataTemplate>
         <DataTemplate x:Key="TabularTemplate">
-            <Grid RowDefinitions="* 50">
+            <Grid RowDefinitions="* Auto">
                 <navigation:NavigationRoot Grid.Row="0">
                     <navigation:NavigationRoot.Transitions>
                         <Transitions>
@@ -75,16 +75,20 @@
                                 Command="{Binding PageSelectCommand,
                                               RelativeSource={RelativeSource AncestorType=ui:Shell}}"
                                 CommandParameter="{Binding}">
-                                <StackPanel Orientation="Vertical" VerticalAlignment="Center"
-                                            HorizontalAlignment="Stretch">
-                                    <PathIcon
-                                        Data="{Binding Icon, Converter={x:Static converters:IconConverters.IconConverter}}"
-                                        Width="15" Height="15">
-                                    </PathIcon>
-                                    <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" Margin="0 10 0 0"
-                                               FontSize="12">
-                                    </TextBlock>
-                                </StackPanel>
+                                <Border
+                                    Padding="{Binding BottomPadding, RelativeSource={RelativeSource AncestorType=ui:Shell}}">
+                                    <StackPanel Orientation="Vertical" VerticalAlignment="Center"
+                                                HorizontalAlignment="Stretch">
+                                        <PathIcon
+                                            Data="{Binding Icon, Converter={x:Static converters:IconConverters.IconConverter}}"
+                                            Width="15" Height="15" Margin="0 5 0 0">
+                                        </PathIcon>
+                                        <TextBlock Text="{Binding Title}" HorizontalAlignment="Center"
+                                                   Margin="0 10 0 0"
+                                                   FontSize="12">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
                             </HyperlinkButton>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

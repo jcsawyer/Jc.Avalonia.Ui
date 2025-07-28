@@ -3,6 +3,7 @@ using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Controls.Platform;
 using Avalonia.Controls.Templates;
 using Avalonia.Interactivity;
 using Avalonia.VisualTree;
@@ -15,8 +16,9 @@ namespace Jc.Avalonia.Ui;
 
 public partial class Shell : UserControl
 {
-    public static readonly StyledProperty<NavigationMode> NavigationModeProperty = AvaloniaProperty.Register<Shell, NavigationMode>(
-        nameof(NavigationMode));
+    public static readonly StyledProperty<NavigationMode> NavigationModeProperty =
+        AvaloniaProperty.Register<Shell, NavigationMode>(
+            nameof(NavigationMode));
 
     public NavigationMode NavigationMode
     {
@@ -32,15 +34,35 @@ public partial class Shell : UserControl
         get => GetValue(PagesProperty);
         set => SetValue(PagesProperty, value);
     }
-    
+
+    public static readonly StyledProperty<Thickness> SafeAreaPaddingProperty =
+        AvaloniaProperty.Register<Shell, Thickness>(
+            nameof(SafeAreaPadding));
+
+    public Thickness SafeAreaPadding
+    {
+        get => GetValue(SafeAreaPaddingProperty);
+        set => SetValue(SafeAreaPaddingProperty, value);
+    }
+
+    public static readonly StyledProperty<Thickness> BottomPaddingProperty =
+        AvaloniaProperty.Register<Shell, Thickness>(
+            nameof(BottomPadding));
+
+    public Thickness BottomPadding
+    {
+        get => GetValue(BottomPaddingProperty);
+        set => SetValue(BottomPaddingProperty, value);
+    }
+
     public ICommand PageSelectCommand { get; }
-    
+
     public Shell()
     {
         InitializeComponent();
-        
+
         PageSelectCommand = ReactiveCommand.Create<Page>(NavigateToPage);
-        
+
         if (!Resources.ContainsKey("NavigationModeToTemplateConverter"))
         {
             Resources.Add("NavigationModeToTemplateConverter", new NavigationModeToTemplateConverter
@@ -56,12 +78,39 @@ public partial class Shell : UserControl
     {
         base.OnLoaded(e);
         var topLevel = TopLevel.GetTopLevel(this);
-        topLevel.BackRequested += TopLevelOnBackRequested;
-        
+        if (topLevel is { })
+        {
+            topLevel.BackRequested += TopLevelOnBackRequested;
+            if (topLevel.InsetsManager is { } insets)
+            {
+                insets.DisplayEdgeToEdgePreference = true;
+                SafeAreaPadding = insets.SafeAreaPadding;
+                BottomPadding = new Thickness(0, 0, 0, insets.SafeAreaPadding.Bottom);
+                insets.SafeAreaChanged += InsetsOnSafeAreaChanged;
+            }
+        }
+
         if (Pages.Count > 0)
         {
             NavigationManager.Current.NavigateTo(Activator.CreateInstance(Pages[0].PageType) as UserControl);
         }
+    }
+
+    protected override void OnUnloaded(RoutedEventArgs e)
+    {
+        var topLevel = TopLevel.GetTopLevel(this);
+        if (topLevel?.InsetsManager is { } insets)
+        {
+            insets.SafeAreaChanged -= InsetsOnSafeAreaChanged;
+        }
+
+        base.OnUnloaded(e);
+    }
+
+    private void InsetsOnSafeAreaChanged(object? sender, SafeAreaChangedArgs e)
+    {
+        SafeAreaPadding = e.SafeAreaPadding;
+        BottomPadding = new Thickness(0, 0, 0, e.SafeAreaPadding.Bottom);
     }
 
     private void TopLevelOnBackRequested(object? sender, RoutedEventArgs e)
@@ -105,4 +154,4 @@ public partial class Shell : UserControl
         var pageInstance = Activator.CreateInstance(page.PageType) as UserControl;
         NavigationManager.Current.NavigateTo(pageInstance, NavigationMethod.Replace);
     }
- }
+}
