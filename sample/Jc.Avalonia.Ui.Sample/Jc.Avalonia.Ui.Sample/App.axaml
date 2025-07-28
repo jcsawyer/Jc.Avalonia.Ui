@@ -6,7 +6,8 @@
     <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.Styles>
-        <ui:JcUi />
         <FluentTheme />
+        <ui:JcUi />
+        <StyleInclude Source="avares://Jc.Avalonia.Ui/Resources/Icons.axaml"></StyleInclude>
     </Application.Styles>
 </Application>

@@ -1,10 +1,12 @@
+using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
 
 namespace Jc.Avalonia.Ui;
 
-public partial class JcUi : Styles
+public class JcUi : Styles
 {
-    public JcUi()
+    public JcUi(IServiceProvider? sp = null)
     {
+        AvaloniaXamlLoader.Load(sp, this);
     }
 }

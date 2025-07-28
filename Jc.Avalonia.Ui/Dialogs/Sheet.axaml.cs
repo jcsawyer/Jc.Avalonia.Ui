@@ -151,6 +151,7 @@ internal partial class Sheet : UserControl
                     {
                         DialogManager.OnSheetClosed?.Invoke(this, EventArgs.Empty);
                         IsClosing = false;
+                        Content = null;
                     }
                 }
             }

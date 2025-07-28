@@ -1,13 +1,12 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        x:Class="Jc.Avalonia.Ui.JcUi">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Styles.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <MergeResourceInclude Source="/Controls/TabControl.axaml" />
+                <MergeResourceInclude Source="/Controls/TextBox.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>
-    
-    <StyleInclude Source="/Resources/Icons.axaml"></StyleInclude>
-    <StyleInclude Source="Controls/Controls.axaml"></StyleInclude>
+
 </Styles>

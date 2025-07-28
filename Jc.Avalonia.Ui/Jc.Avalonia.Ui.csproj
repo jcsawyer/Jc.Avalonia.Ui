@@ -20,19 +20,4 @@
         </AvaloniaResource>
     </ItemGroup>
 
-    <ItemGroup>
-      <Compile Update="Navigation\NavigationRoot.axaml.cs">
-        <DependentUpon>NavigationRoot.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-      <Compile Update="Dialogs\Sheet.axaml.cs">
-        <DependentUpon>Sheet.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Converters\" />
-    </ItemGroup>
-
 </Project>

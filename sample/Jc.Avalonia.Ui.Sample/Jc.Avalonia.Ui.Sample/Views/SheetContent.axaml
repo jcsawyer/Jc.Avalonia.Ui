@@ -4,11 +4,58 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Jc.Avalonia.Ui.Sample.Views.SheetContent">
-    <StackPanel>
-        <TextBlock Margin="0 0 0 10" FontWeight="Light" TextWrapping="Wrap">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</TextBlock>
-        <TextBlock Margin="0 0 0 10" FontWeight="Light" TextWrapping="Wrap">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</TextBlock>
-        <TextBlock Margin="0 0 0 10" FontWeight="Light" TextWrapping="Wrap">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</TextBlock>
-        <TextBlock Margin="0 0 0 10" FontWeight="Light" TextWrapping="Wrap">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</TextBlock>
-        <TextBlock Margin="0 0 0 10" FontWeight="Light" TextWrapping="Wrap">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</TextBlock>
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border
+            Grid.Row="0"
+            Background="#f5f5f5"
+                Margin="25 0 25 0"
+            CornerRadius="10">
+            <TextBox
+                Grid.Row="0"
+                Grid.Column="0"
+                Name="Search"
+                Watermark="Search for a food...">
+                <TextBox.InnerLeftContent>
+                    <Border Padding="5">
+                        <PathIcon Data="{StaticResource search}" Height="20" Width="12" Foreground="#459dd5" />
+                    </Border>
+                </TextBox.InnerLeftContent>
+            </TextBox>
+        </Border>
+        <TabControl
+            Grid.Row="1"
+            Grid.Column="0"
+            FontSize="12"
+            FontWeight="Light">
+            <TabItem Header="Food">
+                <Border
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Background="#f3f3f3"
+                    Height="150"></Border>
+            </TabItem>
+            <TabItem Header="Sugars">
+                
+            </TabItem>
+            <TabItem Header="Injection">
+                
+            </TabItem>
+        </TabControl>
+    </Grid>
+
+    <UserControl.Styles>
+        <Style Selector="TextBox#Search">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="10,0,10,0" />
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Foreground" Value="#555555" />
+        </Style>
+    </UserControl.Styles>
 </UserControl>
