@@ -19,8 +19,7 @@ internal partial class Sheet : UserControl
                     .FirstOrDefault(x => x.Name == "Sheet");
                 if (sheetControl is { } sheetBorder && !sheet.IsOpen)
                 {
-                    var transform = (TranslateTransform)sheetBorder.RenderTransform;
-                    if (transform is not null)
+                    if (sheetBorder.RenderTransform is TranslateTransform transform)
                     {
                         transform.Y = value;
                     }
@@ -105,8 +104,7 @@ internal partial class Sheet : UserControl
 
         if (IsOpen)
         {
-            var transform = sheet.RenderTransform as TranslateTransform;
-            if (transform is null)
+            if (sheet.RenderTransform is not TranslateTransform transform)
             {
                 _animtationTimer.Stop();
                 return;
@@ -133,8 +131,7 @@ internal partial class Sheet : UserControl
         }
         else if (!IsOpen)
         {
-            var transform = (TranslateTransform)sheet.RenderTransform;
-            if (transform is null)
+            if (sheet.RenderTransform is not TranslateTransform transform)
             {
                 _animtationTimer.Stop();
                 return;

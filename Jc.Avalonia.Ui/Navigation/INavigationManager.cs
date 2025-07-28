@@ -4,6 +4,6 @@ namespace Jc.Avalonia.Ui.Navigation;
 
 public interface INavigationManager
 {
-    void NavigateTo<TPage>(TPage page, NavigationMethod method) where TPage : UserControl;
+    void NavigateTo(UserControl page, NavigationMethod method);
     void GoBack();
 }

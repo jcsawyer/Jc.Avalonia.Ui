@@ -16,7 +16,7 @@ public enum NavigationMethod
     /// Replaces the current page with a new one.
     /// </summary>
     Replace,
-
+    
     /// <summary>
     /// Clears the navigation stack.
     /// </summary>

@@ -11,17 +11,13 @@
         </Grid.RowDefinitions>
         <Border
             Grid.Row="0"
-            Background="#f5f5f5"
-                Margin="25 0 25 0"
-            CornerRadius="10">
+            Margin="25 0 25 0">
             <TextBox
-                Grid.Row="0"
-                Grid.Column="0"
                 Name="Search"
                 Watermark="Search for a food...">
                 <TextBox.InnerLeftContent>
-                    <Border Padding="5">
-                        <PathIcon Data="{StaticResource search}" Height="20" Width="12" Foreground="#459dd5" />
+                    <Border Padding="5 0 10 2">
+                        <PathIcon Data="{StaticResource search}" Height="12" Width="12" Foreground="#459dd5" />
                     </Border>
                 </TextBox.InnerLeftContent>
             </TextBox>
@@ -32,30 +28,36 @@
             FontSize="12"
             FontWeight="Light">
             <TabItem Header="Food">
+                <StackPanel>
                 <Border
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Top"
                     Background="#f3f3f3"
-                    Height="150"></Border>
+                    Height="150">
+                    <ScrollViewer VerticalAlignment="Stretch" Padding="20 0">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" Spacing="50">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                <PathIcon Data="{StaticResource barcode_scan}" Width="70" Height="70" Foreground="#459dd5"></PathIcon>
+                                <TextBlock Text="Scan a barcode" HorizontalAlignment="Center" Margin="0 15 0 0" FontSize="12" Foreground="#459dd5"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                <PathIcon Data="{StaticResource pencil_plus_outline}" Width="55" Height="55" Foreground="#459dd5"></PathIcon>
+                                <TextBlock Text="Manual add" HorizontalAlignment="Center" Margin="0 25 0 0" FontSize="12" Foreground="#459dd5"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+                    <Border Padding="20">
+                    <TextBlock Text="Search results" FontWeight="SemiBold"></TextBlock>
+                    </Border>
+                </StackPanel>
             </TabItem>
             <TabItem Header="Sugars">
-                
+
             </TabItem>
             <TabItem Header="Injection">
-                
+
             </TabItem>
         </TabControl>
     </Grid>
-
-    <UserControl.Styles>
-        <Style Selector="TextBox#Search">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Padding" Value="10,0,10,0" />
-            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
-            <Setter Property="CornerRadius" Value="20" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="Foreground" Value="#555555" />
-        </Style>
-    </UserControl.Styles>
 </UserControl>

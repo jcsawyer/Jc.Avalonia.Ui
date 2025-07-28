@@ -8,7 +8,6 @@
              x:Class="Jc.Avalonia.Ui.Dialogs.Sheet">
     <UserControl.Styles>
         <Style Selector="dialogs|Sheet">
-            <!-- <Setter Property="IsOpen" Value="False"></Setter> -->
             <Setter Property="Template">
                 <ControlTemplate>
                     <Border Padding="0 100 0 0">

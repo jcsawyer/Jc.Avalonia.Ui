@@ -9,7 +9,7 @@ public class NavigationManager : INavigationManager
     
     public static NavigationManager Current => Instance.Value;
     
-    public void NavigateTo<TPage>(TPage page, NavigationMethod method = NavigationMethod.Push) where TPage : UserControl
+    public void NavigateTo(UserControl page, NavigationMethod method = NavigationMethod.Push)
     {
         NavigationRoot.PushPage(page, method);
     }

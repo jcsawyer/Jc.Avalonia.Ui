@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Jc.Avalonia.Ui.Sample.ViewModels"
              xmlns:ui="clr-namespace:Jc.Avalonia.Ui;assembly=Jc.Avalonia.Ui"
+             xmlns:navigation="clr-namespace:Jc.Avalonia.Ui.Navigation;assembly=Jc.Avalonia.Ui"
+             xmlns:views="clr-namespace:Jc.Avalonia.Ui.Sample.Views"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="600"
              x:Class="Jc.Avalonia.Ui.Sample.Views.MainView"
              x:DataType="vm:MainViewModel"
@@ -13,7 +15,11 @@
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
     <vm:MainViewModel />
   </Design.DataContext>
-  <ui:Shell>
-      <Grid />
+  <ui:Shell NavigationMode="Tabular">
+    <ui:Shell.Pages>
+      <navigation:Page Title="Main Page" Icon="home_regular" PageType="{x:Type  views:UserControl1 }" />
+      <navigation:Page Title="Settings" Icon="" PageType="{x:Type views:UserControl2}" />
+    </ui:Shell.Pages>
+    <Grid />
   </ui:Shell>
 </UserControl>
