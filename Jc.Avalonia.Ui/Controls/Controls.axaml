@@ -3,10 +3,12 @@
     <Styles.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <MergeResourceInclude Source="/Controls/Shell.axaml" />
+                <MergeResourceInclude Source="/Controls/ShellContent.axaml" />
+                <MergeResourceInclude Source="/Controls/TabContent.axaml" />
                 <MergeResourceInclude Source="/Controls/TabControl.axaml" />
                 <MergeResourceInclude Source="/Controls/TextBox.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>
-
 </Styles>

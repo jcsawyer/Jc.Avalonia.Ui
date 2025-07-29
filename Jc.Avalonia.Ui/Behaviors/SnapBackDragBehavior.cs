@@ -10,8 +10,6 @@ namespace Jc.Avalonia.Ui.Behaviors;
 
 internal class SnapBackDragBehavior : Behavior<Border>
 {
-    private Sheet? _sheet;
-
     private Point? _dragStart;
     private double _initialOffsetY;
     private bool _isDragging;
@@ -21,8 +19,6 @@ internal class SnapBackDragBehavior : Behavior<Border>
         base.OnAttached();
         if (AssociatedObject is { } sheetTab)
         {
-            _sheet = Shell.GetShell().GetVisualDescendants().OfType<Sheet>().Single();
-
             sheetTab.PointerPressed += OnPointerPressed;
             sheetTab.PointerMoved += OnPointerMoved;
             sheetTab.PointerReleased += OnPointerReleased;
@@ -43,12 +39,12 @@ internal class SnapBackDragBehavior : Behavior<Border>
 
     private void OnPointerReleased(object? sender, PointerReleasedEventArgs e)
     {
-        if (!_isDragging)
+        if (!_isDragging || !((sender as Control)?.GetVisualAncestors().OfType<Sheet>().SingleOrDefault() is { } sheetControl))
         {
             return;
         }
 
-        var sheet = _sheet.GetVisualDescendants().OfType<Border>().FirstOrDefault(x => x.Name == "Sheet");
+        var sheet = sheetControl.GetVisualDescendants().OfType<Border>().FirstOrDefault(x => x.Name == "Sheet");
         _isDragging = false;
 
         if (sheet?.RenderTransform is not TranslateTransform translate)
@@ -73,13 +69,13 @@ internal class SnapBackDragBehavior : Behavior<Border>
 
     private void OnPointerMoved(object? sender, PointerEventArgs e)
     {
-        if (!_isDragging || _sheet is null)
+        if (!_isDragging || !((sender as Control)?.GetVisualAncestors().OfType<Sheet>().SingleOrDefault() is { } sheetControl))
         {
             return;
         }
 
-        var sheet = _sheet.GetVisualDescendants().OfType<Border>().FirstOrDefault(x => x.Name == "Sheet");
-        var currentPos = e.GetPosition(_sheet);
+        var sheet = sheetControl.GetVisualDescendants().OfType<Border>().FirstOrDefault(x => x.Name == "Sheet");
+        var currentPos = e.GetPosition(sheetControl);
         var deltaY = currentPos.Y - _dragStart.GetValueOrDefault().Y;
 
         if (sheet?.RenderTransform is not TranslateTransform translate)
@@ -103,13 +99,13 @@ internal class SnapBackDragBehavior : Behavior<Border>
 
     private void OnPointerPressed(object? sender, PointerPressedEventArgs e)
     {
-        if (_sheet is null)
+        if (!((sender as Control)?.GetVisualAncestors().OfType<Sheet>().SingleOrDefault() is { } sheetControl))
         {
             return;
         }
 
-        var sheet = _sheet.GetVisualDescendants().OfType<Border>().FirstOrDefault(x => x.Name == "Sheet");
-        _dragStart = e.GetPosition(_sheet);
+        var sheet = sheetControl.GetVisualDescendants().OfType<Border>().FirstOrDefault(x => x.Name == "Sheet");
+        _dragStart = e.GetPosition(sheetControl);
         if (sheet?.RenderTransform is not TranslateTransform translate)
         {
             return;

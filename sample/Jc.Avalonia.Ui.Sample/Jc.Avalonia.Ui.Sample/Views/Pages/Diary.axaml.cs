@@ -3,11 +3,11 @@ using Avalonia.Interactivity;
 using Jc.Avalonia.Ui.Dialogs;
 using Jc.Avalonia.Ui.Navigation;
 
-namespace Jc.Avalonia.Ui.Sample.Views;
+namespace Jc.Avalonia.Ui.Sample.Views.Pages;
 
-public partial class DiaryPage : UserControl
+public partial class Diary : UserControl
 {
-    public DiaryPage()
+    public Diary()
     {
         InitializeComponent();
     }
@@ -18,13 +18,14 @@ public partial class DiaryPage : UserControl
         dialogManager.OpenSheet(new SheetContent());
     }
 
-    private void Button2_OnClick(object? sender, RoutedEventArgs e)
+    private async void Button2_OnClick(object? sender, RoutedEventArgs e)
     {
-        NavigationManager.Current.NavigateTo(new Insights(), NavigationMethod.Push);
+        await NavigationManager.Current.NavigateAsync("/Home/Insights");
+        //NavigationManager.Current.NavigateTo(new Insights(), NavigationMethod.Push);
     }
     
     private void Button3_OnClick(object? sender, RoutedEventArgs e)
     {
-        NavigationManager.Current.GoBack();
+        //NavigationManager.Current.GoBack();
     }
 }

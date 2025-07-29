@@ -3,10 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Jc.Avalonia.Ui.Sample.ViewModels"
-             xmlns:ui="clr-namespace:Jc.Avalonia.Ui;assembly=Jc.Avalonia.Ui"
-             xmlns:navigation="clr-namespace:Jc.Avalonia.Ui.Navigation;assembly=Jc.Avalonia.Ui"
-             xmlns:views="clr-namespace:Jc.Avalonia.Ui.Sample.Views"
-             xmlns:tabular="clr-namespace:Jc.Avalonia.Ui.Navigation.Tabular;assembly=Jc.Avalonia.Ui"
+             xmlns:pages="clr-namespace:Jc.Avalonia.Ui.Sample.Views.Pages"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="600"
              x:Class="Jc.Avalonia.Ui.Sample.Views.MainView"
              x:DataType="vm:MainViewModel"
@@ -16,14 +13,34 @@
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainViewModel />
     </Design.DataContext>
-    <ui:Shell NavigationMode="Tabular">
-        <ui:Shell.TabItems>
-            <tabular:TabItemModel Title="Diary" Icon="book_open_variant_outline" IsCallToAction="False" Command="{Binding NavigateDiary}" />
-            <tabular:TabItemModel Title="Insights" Icon="brain" IsCallToAction="False" Command="{Binding NavigateInsights}" />
-            <tabular:TabItemModel Title="" Icon="plus" IsCallToAction="True" Command="{Binding AddCommand}" />
-            <tabular:TabItemModel Title="Sugars" Icon="water_outline" Command="{Binding NavigateDiary}" />
-            <tabular:TabItemModel Title="Food" Icon="food_outline" Command="{Binding NavigateDiary}" />
-        </ui:Shell.TabItems>
-        <Grid />
-    </ui:Shell>
+    <Shell>
+        <TabBar>
+            <TabContent Route="Home">
+                <ShellContent
+                    Title="Diary"
+                    Icon="book_open_variant_outline"
+                    Route="Diary"
+                    ContentTemplate="pages:Diary" />
+                <ShellContent
+                    Title="Insights"
+                    Icon="brain"
+                    Route="Insights"
+                    ContentTemplate="pages:Insights" />
+                <TabBarButton
+                    Icon="plus"
+                    Route="Add"
+                    Command="{x:Static vm:MainViewModel.AddCommand}" />
+                <ShellContent
+                    Title="Sugars"
+                    Icon="water_outline"
+                    Route="Sugars"
+                    ContentTemplate="pages:Sugars" />
+                <ShellContent
+                    Title="Food"
+                    Icon="food_outline"
+                    Route="Food"
+                    ContentTemplate="pages:Food" /> 
+            </TabContent>
+        </TabBar>
+    </Shell>
 </UserControl>

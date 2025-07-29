@@ -9,7 +9,6 @@
 
     <Design.PreviewWith>
         <ui:Shell>
-            <Grid />
         </ui:Shell>
     </Design.PreviewWith>
 

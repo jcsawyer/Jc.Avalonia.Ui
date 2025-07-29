@@ -1,0 +1,18 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:dialogs="clr-namespace:Jc.Avalonia.Ui.Dialogs">
+    
+    <ControlTheme x:Key="{x:Type Shell}" TargetType="Shell">
+        <Setter Property="Background" Value="{DynamicResource ShellBackground}"></Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <NavigationRoot 
+                        Name="PART_ContentPresenter"
+                        Transition="{TemplateBinding PageTransition}" />
+                    <dialogs:DialogHost />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>
