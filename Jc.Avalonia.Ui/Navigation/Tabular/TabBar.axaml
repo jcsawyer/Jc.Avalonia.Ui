@@ -50,7 +50,8 @@
             <Button
                 Classes="Tab"
                 HorizontalAlignment="Stretch"
-                Command="{Binding Command}">
+                Command="{Binding Command}"
+                Classes.Selected="{Binding IsActive}">
                 <Border
                     Padding="{Binding BottomPadding, RelativeSource={RelativeSource AncestorType=ui:Shell}}">
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center"
@@ -84,6 +85,12 @@
                     </Style>
 
                     <Style Selector="Button.Tab:selected /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Foreground" Value="#f5f5f5" />
+                        <Setter Property="Background" Value="#505050" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                    </Style>
+                    
+                    <Style Selector="Button.Selected /template/ ContentPresenter#PART_ContentPresenter">
                         <Setter Property="Foreground" Value="#f5f5f5" />
                         <Setter Property="Background" Value="#505050" />
                         <Setter Property="FontWeight" Value="Bold" />

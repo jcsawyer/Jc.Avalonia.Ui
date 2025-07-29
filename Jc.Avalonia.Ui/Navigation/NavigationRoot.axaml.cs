@@ -26,13 +26,13 @@ internal partial class NavigationRoot : UserControl
     /// </summary>
     public Stack<Control> Pages = new Stack<Control>();
 
-    public static void PopPage()
+    public static Control? PopPage()
     {
         var navigationRoot = GetNavigationRoot();
 
         if (navigationRoot.Pages.Count == 0)
         {
-            return;
+            return null;
         }
 
         var content = navigationRoot.Pages.Pop();
@@ -44,6 +44,8 @@ internal partial class NavigationRoot : UserControl
         {
             transition.Content = content;
         }
+
+        return content;
     }
 
     public static void PushPage(UserControl content, NavigationMethod method)

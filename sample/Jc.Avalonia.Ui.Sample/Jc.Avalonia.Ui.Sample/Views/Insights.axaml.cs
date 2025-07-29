@@ -4,22 +4,20 @@ using Jc.Avalonia.Ui.Navigation;
 
 namespace Jc.Avalonia.Ui.Sample.Views;
 
-public partial class UserControl2 : UserControl
+public partial class Insights : UserControl
 {
-    public UserControl2()
+    public Insights()
     {
         InitializeComponent();
     }
 
     private void Button_OnClick(object? sender, RoutedEventArgs e)
     {
-        var nav = new NavigationManager();
-        nav.GoBack();
+        NavigationManager.Current.GoBack();
     }
 
     private void Button2_OnClick(object? sender, RoutedEventArgs e)
     {
-        var nav = new NavigationManager();
-        nav.NavigateTo(new UserControl1(), NavigationMethod.Push);
+        NavigationManager.Current.NavigateTo(new DiaryPage(), NavigationMethod.Push);
     }
 }

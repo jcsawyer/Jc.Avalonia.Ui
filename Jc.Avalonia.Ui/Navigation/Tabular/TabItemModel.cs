@@ -42,4 +42,13 @@ public class TabItemModel : AvaloniaObject
         get => GetValue(CommandProperty);
         set => SetValue(CommandProperty, value);
     }
+
+    public static readonly StyledProperty<bool> IsActiveProperty = AvaloniaProperty.Register<TabItemModel, bool>(
+        nameof(IsActive));
+
+    public bool IsActive
+    {
+        get => GetValue(IsActiveProperty);
+        set => SetValue(IsActiveProperty, value);
+    }
 }

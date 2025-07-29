@@ -18,11 +18,11 @@
     </Design.DataContext>
     <ui:Shell NavigationMode="Tabular">
         <ui:Shell.TabItems>
-            <tabular:TabItemModel Title="Diary" Icon="book_open_variant_outline" IsCallToAction="False" Command="{Binding NavigateCommand}" />
-            <tabular:TabItemModel Title="Insights" Icon="brain" IsCallToAction="False" Command="{Binding NavigateCommand}" />
+            <tabular:TabItemModel Title="Diary" Icon="book_open_variant_outline" IsCallToAction="False" Command="{Binding NavigateDiary}" />
+            <tabular:TabItemModel Title="Insights" Icon="brain" IsCallToAction="False" Command="{Binding NavigateInsights}" />
             <tabular:TabItemModel Title="" Icon="plus" IsCallToAction="True" Command="{Binding AddCommand}" />
-            <tabular:TabItemModel Title="Sugars" Icon="water_outline" Command="{Binding NavigateCommand}" />
-            <tabular:TabItemModel Title="Food" Icon="food_outline" Command="{Binding NavigateCommand}" />
+            <tabular:TabItemModel Title="Sugars" Icon="water_outline" Command="{Binding NavigateDiary}" />
+            <tabular:TabItemModel Title="Food" Icon="food_outline" Command="{Binding NavigateDiary}" />
         </ui:Shell.TabItems>
         <Grid />
     </ui:Shell>

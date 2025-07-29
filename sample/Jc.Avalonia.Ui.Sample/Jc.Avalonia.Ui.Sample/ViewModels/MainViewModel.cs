@@ -13,7 +13,8 @@ public class MainViewModel : ViewModelBase
     private readonly IDialogManager _dialogManager;
     
     public ICommand AddCommand { get; }
-    public ICommand NavigateCommand { get; set; }
+    public ICommand NavigateDiary { get; set; }
+    public ICommand NavigateInsights { get; set; }
     
     public MainViewModel(INavigationManager navigationManager, IDialogManager dialogManager)
     {
@@ -21,7 +22,8 @@ public class MainViewModel : ViewModelBase
         _dialogManager = dialogManager ?? throw new ArgumentNullException(nameof(dialogManager));
 
         AddCommand = ReactiveCommand.Create(Add);
-        NavigateCommand = ReactiveCommand.Create(Navigate);
+        NavigateDiary = ReactiveCommand.Create(() => Navigate("Diary"));
+        NavigateInsights = ReactiveCommand.Create(() => Navigate("Insights"));
     }
 
     private void Add()
@@ -29,8 +31,16 @@ public class MainViewModel : ViewModelBase
         _dialogManager.OpenSheet(new SheetContent());
     }
 
-    private void Navigate()
+    private void Navigate(string pageName)
     {
-        _navigationManager.NavigateTo(new UserControl1(), NavigationMethod.Clear);
+        switch (pageName)
+        {
+            case "Diary":
+                _navigationManager.NavigateTo(new DiaryPage(), NavigationMethod.Push);
+                break;
+            case "Insights":
+                _navigationManager.NavigateTo(new Insights(), NavigationMethod.Push);
+                break;
+        }
     }
 }
