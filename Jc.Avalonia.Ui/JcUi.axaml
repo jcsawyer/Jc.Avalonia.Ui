@@ -8,6 +8,6 @@
         </ResourceDictionary>
     </Styles.Resources>
     
+    <StyleInclude Source="/Controls/Controls.axaml"></StyleInclude>
     <StyleInclude Source="/Resources/Icons.axaml"></StyleInclude>
-    <StyleInclude Source="Controls/Controls.axaml"></StyleInclude>
 </Styles>

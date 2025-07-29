@@ -10,6 +10,7 @@ using Avalonia.VisualTree;
 using Jc.Avalonia.Ui.Converters;
 using Jc.Avalonia.Ui.Dialogs;
 using Jc.Avalonia.Ui.Navigation;
+using Jc.Avalonia.Ui.Navigation.Tabular;
 using ReactiveUI;
 
 namespace Jc.Avalonia.Ui;
@@ -26,13 +27,13 @@ public partial class Shell : UserControl
         set => SetValue(NavigationModeProperty, value);
     }
 
-    public static readonly StyledProperty<AvaloniaList<Page>> PagesProperty =
-        AvaloniaProperty.Register<Shell, AvaloniaList<Page>>(nameof(Pages), new AvaloniaList<Page>());
+    public static readonly StyledProperty<AvaloniaList<TabItemModel>> TabItemsProperty = AvaloniaProperty.Register<Shell, AvaloniaList<TabItemModel>>(
+        nameof(TabItems), defaultValue: new AvaloniaList<TabItemModel>());
 
-    public AvaloniaList<Page> Pages
+    public AvaloniaList<TabItemModel> TabItems
     {
-        get => GetValue(PagesProperty);
-        set => SetValue(PagesProperty, value);
+        get => GetValue(TabItemsProperty);
+        set => SetValue(TabItemsProperty, value);
     }
 
     public static readonly StyledProperty<Thickness> SafeAreaPaddingProperty =
@@ -88,11 +89,6 @@ public partial class Shell : UserControl
                 BottomPadding = new Thickness(0, 0, 0, insets.SafeAreaPadding.Bottom);
                 insets.SafeAreaChanged += InsetsOnSafeAreaChanged;
             }
-        }
-
-        if (Pages.Count > 0)
-        {
-            NavigationManager.Current.NavigateTo(Activator.CreateInstance(Pages[0].PageType) as UserControl);
         }
     }
 

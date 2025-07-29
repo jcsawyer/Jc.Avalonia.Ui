@@ -5,7 +5,7 @@
              xmlns:ui="clr-namespace:Jc.Avalonia.Ui"
              xmlns:navigation="clr-namespace:Jc.Avalonia.Ui.Navigation"
              xmlns:dialogs="clr-namespace:Jc.Avalonia.Ui.Dialogs"
-             xmlns:converters="clr-namespace:Jc.Avalonia.Ui.Converters"
+             xmlns:tabular="clr-namespace:Jc.Avalonia.Ui.Navigation.Tabular"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Jc.Avalonia.Ui.Shell"
              TopLevel.AutoSafeAreaPadding="False">
@@ -48,6 +48,8 @@
                                 Content="{Binding Content, RelativeSource={RelativeSource AncestorType=ui:Shell}}" />
             </navigation:NavigationRoot>
         </DataTemplate>
+        
+        <!-- Tabs template -->
         <DataTemplate x:Key="TabularTemplate">
             <Grid RowDefinitions="* Auto">
                 <navigation:NavigationRoot Grid.Row="0">
@@ -59,42 +61,11 @@
                     </navigation:NavigationRoot.Transitions>
                     <ContentControl Content="{Binding Content, RelativeSource={RelativeSource AncestorType=ui:Shell}}" />
                 </navigation:NavigationRoot>
-                <ItemsControl Grid.Row="1"
-                              Name="TabNavigation"
-                              ItemsSource="{Binding  Pages, RelativeSource={RelativeSource AncestorType=ui:Shell}}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <UniformGrid HorizontalAlignment="Stretch" Rows="1" />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <HyperlinkButton
-                                VerticalAlignment="Stretch"
-                                HorizontalAlignment="Stretch"
-                                Command="{Binding PageSelectCommand,
-                                              RelativeSource={RelativeSource AncestorType=ui:Shell}}"
-                                CommandParameter="{Binding}">
-                                <Border
-                                    Padding="{Binding BottomPadding, RelativeSource={RelativeSource AncestorType=ui:Shell}}">
-                                    <StackPanel Orientation="Vertical" VerticalAlignment="Center"
-                                                HorizontalAlignment="Stretch">
-                                        <PathIcon
-                                            Data="{Binding Icon, Converter={x:Static converters:IconConverters.IconConverter}}"
-                                            Width="15" Height="15" Margin="0 5 0 0">
-                                        </PathIcon>
-                                        <TextBlock Text="{Binding Title}" HorizontalAlignment="Center"
-                                                   Margin="0 10 0 0"
-                                                   FontSize="12">
-                                        </TextBlock>
-                                    </StackPanel>
-                                </Border>
-                            </HyperlinkButton>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                <tabular:TabBar Grid.Row="1" Items="{Binding TabItems, RelativeSource={RelativeSource AncestorType=ui:Shell}}"/>
             </Grid>
         </DataTemplate>
+        
+        <!-- Hamburger template -->
         <DataTemplate x:Key="HamburgerTemplate">
             <SplitView>
                 <SplitView.Pane>

@@ -6,20 +6,24 @@
              xmlns:ui="clr-namespace:Jc.Avalonia.Ui;assembly=Jc.Avalonia.Ui"
              xmlns:navigation="clr-namespace:Jc.Avalonia.Ui.Navigation;assembly=Jc.Avalonia.Ui"
              xmlns:views="clr-namespace:Jc.Avalonia.Ui.Sample.Views"
+             xmlns:tabular="clr-namespace:Jc.Avalonia.Ui.Navigation.Tabular;assembly=Jc.Avalonia.Ui"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="600"
              x:Class="Jc.Avalonia.Ui.Sample.Views.MainView"
              x:DataType="vm:MainViewModel"
              TopLevel.AutoSafeAreaPadding="False">
-  <Design.DataContext>
-    <!-- This only sets the DataContext for the previewer in an IDE,
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-    <vm:MainViewModel />
-  </Design.DataContext>
-  <ui:Shell NavigationMode="Tabular">
-    <ui:Shell.Pages>
-      <navigation:Page Title="Main Page" Icon="home_regular" PageType="{x:Type  views:UserControl1 }" />
-      <navigation:Page Title="Settings" Icon="" PageType="{x:Type views:UserControl2}" />
-    </ui:Shell.Pages>
-    <Grid />
-  </ui:Shell>
+        <vm:MainViewModel />
+    </Design.DataContext>
+    <ui:Shell NavigationMode="Tabular">
+        <ui:Shell.TabItems>
+            <tabular:TabItemModel Title="Diary" Icon="book_open_variant_outline" IsCallToAction="False" Command="{Binding NavigateCommand}" />
+            <tabular:TabItemModel Title="Insights" Icon="brain" IsCallToAction="False" Command="{Binding NavigateCommand}" />
+            <tabular:TabItemModel Title="" Icon="plus" IsCallToAction="True" Command="{Binding AddCommand}" />
+            <tabular:TabItemModel Title="Sugars" Icon="water_outline" Command="{Binding NavigateCommand}" />
+            <tabular:TabItemModel Title="Food" Icon="food_outline" Command="{Binding NavigateCommand}" />
+        </ui:Shell.TabItems>
+        <Grid />
+    </ui:Shell>
 </UserControl>
