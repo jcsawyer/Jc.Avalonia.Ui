@@ -8,5 +8,6 @@
     <Application.Styles>
         <FluentTheme />
         <ui:JcUi />
+        <StyleInclude Source="Controls/BloodSugarGraph.axaml" />
     </Application.Styles>
 </Application>

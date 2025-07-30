@@ -26,15 +26,4 @@
       <ProjectReference Include="..\..\..\Jc.Avalonia.Ui.Fonts\Jc.Avalonia.Ui.Fonts.csproj" />
       <ProjectReference Include="..\..\..\Jc.Avalonia.Ui\Jc.Avalonia.Ui.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="Views\Pages\Diary.axaml.cs">
-        <DependentUpon>Diary.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-      <Compile Update="Views\Pages\Insights.axaml.cs">
-        <DependentUpon>Insights.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-    </ItemGroup>
 </Project>

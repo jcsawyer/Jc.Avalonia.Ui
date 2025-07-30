@@ -1,0 +1,157 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Jc.Avalonia.Ui.Sample.Controls"
+        xmlns:avalonia="clr-namespace:LiveChartsCore.SkiaSharpView.Avalonia;assembly=LiveChartsCore.SkiaSharpView.Avalonia">
+    <Design.PreviewWith>
+        <controls:BloodSugarGraph />
+    </Design.PreviewWith>
+
+    <Style Selector="controls|BloodSugarGraph">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <ScrollViewer
+                        Margin="0"
+                        Name="scrollView"
+                        VerticalScrollBarVisibility="Hidden">
+                        <Grid>
+                            <StackPanel>
+                                <Grid Height="300"></Grid>
+                                <ContentPresenter Content="{TemplateBinding Content}" />
+                            </StackPanel>
+                            <StackPanel
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Stretch"
+                                Background="#609e6e">
+                                <Panel
+                                    Height="200">
+                                    <StackPanel
+                                        Name="largeCenter"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Orientation="Horizontal">
+                                        <StackPanel.RenderTransform>
+                                            <ScaleTransform ScaleX="1" ScaleY="1"></ScaleTransform>
+                                        </StackPanel.RenderTransform>
+                                        <TextBlock
+                                            Text="{TemplateBinding CurrentReading}"
+                                            Foreground="#f5f5f5"
+                                            FontSize="90"
+                                            FontWeight="Light"
+                                            VerticalAlignment="Center"
+                                            Margin="0,0,10,-20" />
+                                        <StackPanel
+                                            Orientation="Vertical">
+                                            <TextBlock
+                                                Text="{TemplateBinding ReadingDirection}"
+                                                Foreground="#f5f5f5"
+                                                FontSize="30"
+                                                FontWeight="ExtraLight">
+                                            </TextBlock>
+                                            <TextBlock
+                                                Text="mmol/L"
+                                                Foreground="#f5f5f5"
+                                                FontSize="20"
+                                                FontWeight="Light">
+                                            </TextBlock>
+                                            <Rectangle
+                                                Fill="#10000000"
+                                                Width="50"
+                                                Height="2"
+                                                Margin="0 5">
+                                            </Rectangle>
+                                            <StackPanel
+                                                Orientation="Vertical">
+                                                <TextBlock
+                                                    Foreground="#f5f5f5">
+                                                    <Run Text="{TemplateBinding InsulinOnBoard}"></Run>
+                                                    <Run Text="units"></Run>
+                                                </TextBlock>
+                                                <TextBlock
+                                                    Text="on-board"
+                                                    FontSize="12"
+                                                    Foreground="#f5f5f5">
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Panel>
+                                <Panel
+                                    Height="200"
+                                    Margin="-20 -100 -20 0">
+                                    <avalonia:CartesianChart
+                                        Name="bloodSugarChart"
+                                        Series="{TemplateBinding Readings}"
+                                        VerticalAlignment="Stretch"
+                                        HorizontalAlignment="Stretch"
+                                        Padding="5">
+                                    </avalonia:CartesianChart>
+                                </Panel>
+                            </StackPanel>
+                        </Grid>
+                    </ScrollViewer>
+                    <StackPanel
+                        Name="smallSplitBackground"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Stretch"
+                        Background="#609e6e">
+                        <Panel
+                            Name="smallSplit"
+                            Height="75"
+                            Margin="10 0">
+                            <StackPanel
+                                Name="smallSplitLeft"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Stretch"
+                                Orientation="Horizontal"
+                                Margin="200 0 0 0">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        Text="{TemplateBinding CurrentReading}"
+                                        Foreground="#f5f5f5"
+                                        FontSize="40"
+                                        FontWeight="Light"
+                                        Margin="0,0,10,-20" />
+                                    <StackPanel
+                                        VerticalAlignment="Center"
+                                        Orientation="Vertical">
+                                        <TextBlock
+                                            Text="{TemplateBinding ReadingDirection}"
+                                            Foreground="#f5f5f5"
+                                            FontSize="20"
+                                            FontWeight="ExtraLight">
+                                        </TextBlock>
+                                        <TextBlock
+                                            Text="mmol/L"
+                                            Foreground="#f5f5f5"
+                                            FontSize="12"
+                                            FontWeight="Light">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel
+                                Name="smallSplitRight"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right"
+                                Orientation="Vertical"
+                                Margin="0 0 200 0">
+                                <TextBlock
+                                    TextAlignment="Right"
+                                    Foreground="#f5f5f5">
+                                    <Run Text="{TemplateBinding InsulinOnBoard}"></Run> <Run Text="units"></Run>
+                                </TextBlock>
+                                <TextBlock
+                                    TextAlignment="Right"
+                                    Text="on-board"
+                                    FontSize="12"
+                                    Foreground="#f5f5f5">
+                                </TextBlock>
+                            </StackPanel>
+                        </Panel>
+                    </StackPanel>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>
