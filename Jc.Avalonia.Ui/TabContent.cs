@@ -1,6 +1,5 @@
 using Avalonia;
 using Avalonia.Animation;
-using Avalonia.Animation.Easings;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 
@@ -29,7 +28,7 @@ public class TabContent : ShellContent
 
     public object? CurrentView => _navigationOutlet?.CurrentView;
 
-    internal async Task SwapViewAsync(object view, CancellationToken cancel = default)
+    internal async Task SwapViewAsync(object view, bool isForward, CancellationToken cancel = default)
     {
         if (view is not TabContent tabContent)
         {
@@ -37,15 +36,10 @@ public class TabContent : ShellContent
         }
 
         var current = CurrentView;
-        if (await _navigationOutlet?.AddViewAsync(tabContent.Content, cancel))
+        if (await _navigationOutlet?.AddViewAsync(tabContent.Content, isForward, cancel))
         {
             await _navigationOutlet?.RemoveViewAsync(current, cancel);
         }
-    }
-
-    internal async Task AddViewAsync(CancellationToken cancel = default)
-    {
-        await _navigationOutlet?.AddViewAsync(CurrentView, cancel);
     }
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)

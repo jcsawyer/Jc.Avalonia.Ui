@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using DynamicData;
 
 namespace Jc.Avalonia.Ui.Navigation;
 
@@ -103,10 +104,13 @@ public class NavigationManager : INavigationManager
         var view = viewLocator.LocateView(element);
 
         var oldView = _currentView;
+        var isForwardNavigation =
+            route != "/" && _routes.Keys.IndexOf(route) > _routes.Keys.IndexOf(CurrentUri.AbsolutePath);
+        CurrentUri = originalUri;
         if (isHostable)
         {
             var host = new TabContent { Content = view, DataContext = element.Parent.Children };
-            await _shell.AddViewAsync(host, cancel);
+            await _shell.AddViewAsync(host, isForwardNavigation, cancel);
 
             if (_currentView is not TabContent)
             {
@@ -115,7 +119,7 @@ public class NavigationManager : INavigationManager
         }
         else
         {
-            await _shell.AddViewAsync(view, cancel);
+            await _shell.AddViewAsync(view, isForwardNavigation, cancel);
             _currentView = view;
         }
 

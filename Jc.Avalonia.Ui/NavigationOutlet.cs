@@ -24,7 +24,7 @@ public class NavigationOutlet: Panel
 
     public object? CurrentView => Children.LastOrDefault();
 
-    public async Task<bool> AddViewAsync(object view, CancellationToken cancel = default)
+    public async Task<bool> AddViewAsync(object view, bool isForward, CancellationToken cancel = default)
     {
         await _semaphoreSlim.WaitAsync(cancel);
         try
@@ -48,7 +48,7 @@ public class NavigationOutlet: Panel
                 Children.Add(control);
             }
             
-            await RunAnimationAsync(current, control, false, cancel);
+            await RunAnimationAsync(current, control, !isForward, cancel);
             RaisePropertyChanged(CurrentViewProperty, current, CurrentView);
             return true;
         }

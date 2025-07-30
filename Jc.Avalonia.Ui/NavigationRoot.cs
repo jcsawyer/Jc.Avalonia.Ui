@@ -25,7 +25,7 @@ public sealed class NavigationRoot : Panel
 
     public object? CurrentView => Children.LastOrDefault();
 
-    public async Task AddViewAsync(object view, CancellationToken cancel = default)
+    public async Task AddViewAsync(object view, bool isForward, CancellationToken cancel = default)
     {
         await _semaphoreSlim.WaitAsync(cancel);
         try
@@ -48,7 +48,7 @@ public sealed class NavigationRoot : Panel
             {
                 if (current is TabContent currentTabContent && view is TabContent)
                 {
-                    await currentTabContent.SwapViewAsync(view, cancel);
+                    await currentTabContent.SwapViewAsync(view, isForward, cancel);
                     return;
                 }
                 
@@ -62,7 +62,7 @@ public sealed class NavigationRoot : Panel
             
             if (current is null && view is TabContent tabContent)
             {
-                await tabContent.SwapViewAsync(view, cancel);
+                await tabContent.SwapViewAsync(view, isForward, cancel);
             }
         }
         finally
@@ -108,7 +108,7 @@ public sealed class NavigationRoot : Panel
         if (from is TabContent tab && to is TabContent)
         {
             // If both are TabContent, we don't run the transition and let the TabControl handle the transition.
-            return tab.SwapViewAsync(to, cancel);
+            return tab.SwapViewAsync(to, removed, cancel);
         }
 
         return Transition?.Start(from as Visual, to as Visual, !removed, cancel) ?? Task.CompletedTask;

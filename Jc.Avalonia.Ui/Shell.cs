@@ -116,14 +116,14 @@ public class Shell : TemplatedControl
         }
     }
 
-    internal async Task AddViewAsync(object view, CancellationToken cancel = default)
+    internal async Task AddViewAsync(object view, bool isForward, CancellationToken cancel = default)
     {
         if (_navigationRoot is null)
         {
             return;
         }
 
-        await _navigationRoot.AddViewAsync(view, cancel);
+        await _navigationRoot.AddViewAsync(view, isForward, cancel);
     }
 
     internal async Task<bool> RemoveViewAsync(object view, CancellationToken cancel = default)
