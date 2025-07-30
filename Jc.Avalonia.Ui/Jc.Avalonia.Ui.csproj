@@ -10,7 +10,7 @@
 
     <ItemGroup>
       <PackageReference Include="Avalonia" Version="11.3.2" />
-      <PackageReference Include="ReactiveUI" Version="20.1.1" />
+      <PackageReference Include="ReactiveUI" Version="20.4.1" />
       <PackageReference Include="Xaml.Behaviors.Interactivity" Version="11.3.2" />
     </ItemGroup>
 
