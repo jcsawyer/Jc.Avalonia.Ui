@@ -11,7 +11,7 @@ public partial class Insights : UserControl
         InitializeComponent();
     }
 
-    private void Button_OnClick(object? sender, RoutedEventArgs e)
+    private async void Button_OnClick(object? sender, RoutedEventArgs e)
     {
         //NavigationManager.Current.GoBack();
     }

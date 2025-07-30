@@ -20,7 +20,8 @@
                     Title="Diary"
                     Icon="book_open_variant_outline"
                     Route="Diary"
-                    ContentTemplate="pages:Diary" />
+                    ContentTemplate="pages:Diary">
+                </ShellContent>
                 <ShellContent
                     Title="Insights"
                     Icon="brain"
@@ -39,7 +40,7 @@
                     Title="Food"
                     Icon="food_outline"
                     Route="Food"
-                    ContentTemplate="pages:Food" /> 
+                    ContentTemplate="pages:Food" />
             </TabContent>
         </TabBar>
     </Shell>

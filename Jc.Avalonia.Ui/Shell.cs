@@ -116,6 +116,11 @@ public class Shell : TemplatedControl
         }
     }
 
+    protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
+    {
+        base.OnAttachedToVisualTree(e);
+    }
+
     internal async Task AddViewAsync(object view, bool isForward, CancellationToken cancel = default)
     {
         if (_navigationRoot is null)

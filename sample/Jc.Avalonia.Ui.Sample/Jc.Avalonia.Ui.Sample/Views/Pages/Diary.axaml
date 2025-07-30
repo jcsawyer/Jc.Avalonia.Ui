@@ -2,12 +2,168 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:avalonia="clr-namespace:LiveChartsCore.SkiaSharpView.Avalonia;assembly=LiveChartsCore.SkiaSharpView.Avalonia"
+             xmlns:viewModels="clr-namespace:Jc.Avalonia.Ui.Sample.ViewModels"
+             xmlns:sample="clr-namespace:Jc.Avalonia.Ui.Sample"
+             xmlns:controls="clr-namespace:Jc.Avalonia.Ui.Sample.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Jc.Avalonia.Ui.Sample.Views.Pages.Diary">
-    <StackPanel Orientation="Vertical">
-    <TextBlock>Welcome to Avalonia!</TextBlock>
-        <Button Click="Button3_OnClick">Go back</Button>
-        <Button Click="Button_OnClick">Open Sheet!</Button>
-        <Button Click="Button2_OnClick">Open Page 2!</Button>
-    </StackPanel>
+             x:Class="Jc.Avalonia.Ui.Sample.Views.Pages.Diary"
+             x:DataType="viewModels:MainViewModel"
+             DataContext="{x:Static sample:ViewLocator.MainViewModel}"
+             Background="White">
+
+    <Grid>
+        <ScrollViewer
+            Margin="0"
+            Name="scrollView"
+            VerticalScrollBarVisibility="Hidden"
+            ScrollChanged="ScrollView_OnScrollChanged">
+            <Grid>
+                <StackPanel Height="1500">
+                    <Grid Height="300"></Grid>
+                    <TextBlock Text="TEST"></TextBlock>
+                </StackPanel>
+                <StackPanel
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Stretch"
+                    Background="#609e6e">
+                    <controls:BloodSugarGraph
+                        Readings="{Binding GraphReadings}"
+                        TargetRangeLower="4"
+                        TargetRangeUpper="10" />
+                    <Panel
+                        Height="200">
+                        <StackPanel
+                            Name="largeCenter"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Orientation="Horizontal">
+                            <StackPanel.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"></ScaleTransform>
+                            </StackPanel.RenderTransform>
+                            <TextBlock
+                                Text="6.9"
+                                Foreground="#f5f5f5"
+                                FontSize="90"
+                                FontWeight="Light"
+                                VerticalAlignment="Center"
+                                Margin="0,0,10,-20" />
+                            <StackPanel
+                                Orientation="Vertical">
+                                <TextBlock
+                                    Text="→"
+                                    Foreground="#f5f5f5"
+                                    FontSize="30"
+                                    FontWeight="ExtraLight">
+                                </TextBlock>
+                                <TextBlock
+                                    Text="mmol/L"
+                                    Foreground="#f5f5f5"
+                                    FontSize="20"
+                                    FontWeight="Light">
+                                </TextBlock>
+                                <Rectangle
+                                    Fill="#10000000"
+                                    Width="50"
+                                    Height="2"
+                                    Margin="0 5">
+                                </Rectangle>
+                                <StackPanel
+                                    Orientation="Vertical">
+                                    <TextBlock
+                                        Text="4 units"
+                                        Foreground="#f5f5f5">
+                                    </TextBlock>
+                                    <TextBlock
+                                        Text="on-board"
+                                        FontSize="12"
+                                        Foreground="#f5f5f5">
+                                    </TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Panel>
+                    <Panel
+                        Height="200"
+                        Margin="-20 -100 -20 0">
+                        <avalonia:CartesianChart
+                            Name="bloodSugarChart"
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Stretch"
+                            Series="{Binding ReadingSeries}"
+                            Sections="{Binding InRangeSections}"
+                            YAxes="{Binding YAxis}"
+                            XAxes="{Binding XAxis}"
+                            Padding="5">
+                        </avalonia:CartesianChart>
+                    </Panel>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+        <StackPanel
+            Name="smallSplitBackground"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Stretch"
+            Background="#609e6e">
+            <controls:BloodSugarGraph
+                Readings="{Binding GraphReadings}"
+                TargetRangeLower="4"
+                TargetRangeUpper="10" />
+            <Panel
+                Name="smallSplit"
+                Height="75"
+                Opacity="0"
+                Margin="10 0">
+                <StackPanel
+                    Name="smallSplitLeft"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch"
+                    Orientation="Horizontal"
+                    Margin="200 0 0 0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            Text="6.9"
+                            Foreground="#f5f5f5"
+                            FontSize="40"
+                            FontWeight="Light"
+                            Margin="0,0,10,-20" />
+                        <StackPanel
+                            VerticalAlignment="Center"
+                            Orientation="Vertical">
+                            <TextBlock
+                                Text="→"
+                                Foreground="#f5f5f5"
+                                FontSize="20"
+                                FontWeight="ExtraLight">
+                            </TextBlock>
+                            <TextBlock
+                                Text="mmol/L"
+                                Foreground="#f5f5f5"
+                                FontSize="12"
+                                FontWeight="Light">
+                            </TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel
+                    Name="smallSplitRight"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Orientation="Vertical"
+                    Margin="0 0 200 0">
+                    <TextBlock
+                        TextAlignment="Right"
+                        Text="4 units"
+                        Foreground="#f5f5f5">
+                    </TextBlock>
+                    <TextBlock
+                        TextAlignment="Right"
+                        Text="on-board"
+                        FontSize="12"
+                        Foreground="#f5f5f5">
+                    </TextBlock>
+                </StackPanel>
+            </Panel>
+        </StackPanel>
+    </Grid>
 </UserControl>
