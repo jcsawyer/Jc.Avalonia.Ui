@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -64,7 +65,8 @@ public partial class Diary : UserControl
         if (_scrollViewer.Offset.Y > 125)
         {
             var smallOffset = Math.Clamp((_scrollViewer.Offset.Y - 125) * 2, 0, 200);
-            var smallProgress = smallOffset / 100;
+            var smallProgress = smallOffset / 200;
+            
             _smallSplitBackground.Opacity = smallProgress;
             _smallSplit.Opacity = smallProgress;
             
