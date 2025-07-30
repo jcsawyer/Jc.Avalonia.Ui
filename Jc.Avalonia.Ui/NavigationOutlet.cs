@@ -4,13 +4,12 @@ using Avalonia.Controls;
 
 namespace Jc.Avalonia.Ui;
 
-public sealed class NavigationRoot : Panel
+public class NavigationOutlet: Panel
 {
     private readonly SemaphoreSlim _semaphoreSlim = new SemaphoreSlim(1, 1);
-
-    public static readonly StyledProperty<IPageTransition> TransitionProperty =
-        AvaloniaProperty.Register<NavigationRoot, IPageTransition>(
-            nameof(Transition));
+    
+    public static readonly StyledProperty<IPageTransition> TransitionProperty = AvaloniaProperty.Register<NavigationRoot, IPageTransition>(
+        nameof(Transition));
 
     public IPageTransition Transition
     {
@@ -25,15 +24,15 @@ public sealed class NavigationRoot : Panel
 
     public object? CurrentView => Children.LastOrDefault();
 
-    public async Task AddViewAsync(object view, CancellationToken cancel = default)
+    public async Task<bool> AddViewAsync(object view, CancellationToken cancel = default)
     {
         await _semaphoreSlim.WaitAsync(cancel);
         try
         {
             var current = CurrentView;
-            if ((current is not null && current == view) || view is not Control control)
+            if ((current is not null && current.GetType() == view.GetType()) || view is not Control control)
             {
-                return;
+                return false;
             }
 
             if (Children.Contains(control))
@@ -46,24 +45,12 @@ public sealed class NavigationRoot : Panel
             }
             else
             {
-                if (current is TabContent currentTabContent && view is TabContent)
-                {
-                    await currentTabContent.SwapViewAsync(view, cancel);
-                    return;
-                }
-                
-                {
-                    Children.Add(control);
-                }
+                Children.Add(control);
             }
-
+            
             await RunAnimationAsync(current, control, false, cancel);
             RaisePropertyChanged(CurrentViewProperty, current, CurrentView);
-            
-            if (current is null && view is TabContent tabContent)
-            {
-                await tabContent.SwapViewAsync(view, cancel);
-            }
+            return true;
         }
         finally
         {
@@ -90,7 +77,7 @@ public sealed class NavigationRoot : Panel
             {
                 return false;
             }
-
+            
             var current = CurrentView;
             Children.Remove(control);
             RaisePropertyChanged(CurrentViewProperty, current, CurrentView);
@@ -105,12 +92,6 @@ public sealed class NavigationRoot : Panel
 
     private Task RunAnimationAsync(object? from, object? to, bool removed, CancellationToken cancel)
     {
-        if (from is TabContent tab && to is TabContent)
-        {
-            // If both are TabContent, we don't run the transition and let the TabControl handle the transition.
-            return tab.SwapViewAsync(to, cancel);
-        }
-
         return Transition?.Start(from as Visual, to as Visual, !removed, cancel) ?? Task.CompletedTask;
     }
 }

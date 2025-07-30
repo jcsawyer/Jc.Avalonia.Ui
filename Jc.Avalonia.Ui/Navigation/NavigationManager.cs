@@ -107,15 +107,19 @@ public class NavigationManager : INavigationManager
         {
             var host = new TabContent { Content = view, DataContext = element.Parent.Children };
             await _shell.AddViewAsync(host, cancel);
-            _currentView = host;
+
+            if (_currentView is not TabContent)
+            {
+                _currentView = host;
+            }
         }
         else
         {
             await _shell.AddViewAsync(view, cancel);
-            _currentView = view; 
+            _currentView = view;
         }
 
-        if (oldView is not null)
+        if (oldView is not null && !(oldView is TabContent && isHostable))
         {
             await _shell.RemoveViewAsync(oldView, cancel);
         }

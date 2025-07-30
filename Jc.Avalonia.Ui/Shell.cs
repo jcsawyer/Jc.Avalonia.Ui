@@ -5,11 +5,9 @@ using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Platform;
-using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Metadata;
-using Avalonia.VisualTree;
 using Jc.Avalonia.Ui.Navigation;
 
 namespace Jc.Avalonia.Ui;
@@ -33,6 +31,15 @@ public class Shell : TemplatedControl
         AvaloniaProperty.Register<Shell, IPageTransition>(
             nameof(PageTransition), defaultValue: new CrossFade(TimeSpan.FromSeconds(0.25)));
 
+    public static readonly StyledProperty<Thickness> BottomPaddingProperty = AvaloniaProperty.Register<Shell, Thickness>(
+        nameof(BottomPadding));
+
+    public Thickness BottomPadding
+    {
+        get => GetValue(BottomPaddingProperty);
+        set => SetValue(BottomPaddingProperty, value);
+    }
+    
     public IPageTransition PageTransition
     {
         get => GetValue(PageTransitionProperty);
@@ -105,6 +112,7 @@ public class Shell : TemplatedControl
         {
             TopLevel.SetAutoSafeAreaPadding(this, false);
             SafeAreaPadding = insetsManager.SafeAreaPadding;
+            BottomPadding = new  Thickness(0, 3, 0, SafeAreaPadding.Bottom);
         }
     }
 

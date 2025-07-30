@@ -1,11 +1,12 @@
 using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Metadata;
 
 namespace Jc.Avalonia.Ui;
 
-public class ShellContent : UserControl, ITabBarItem
+public class ShellContent : TemplatedControl, ITabBarItem
 {
     public static readonly StyledProperty<string> TitleProperty = AvaloniaProperty.Register<ShellContent, string>(
         nameof(Title));
@@ -41,6 +42,15 @@ public class ShellContent : UserControl, ITabBarItem
     {
         get => GetValue(ContentTemplateProperty);
         set => SetValue(ContentTemplateProperty, value);
+    }
+
+    public static readonly StyledProperty<object?> ContentProperty = AvaloniaProperty.Register<ShellContent, object?>(
+        nameof(Content));
+
+    public object? Content
+    {
+        get => GetValue(ContentProperty);
+        set => SetValue(ContentProperty, value);
     }
     
     [Content] public AvaloniaList<ShellContent> Items { get; set; } = new AvaloniaList<ShellContent>();

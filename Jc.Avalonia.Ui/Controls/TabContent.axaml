@@ -7,9 +7,10 @@
             <ControlTemplate>
                 <Border Background="{TemplateBinding Background}">
                     <Grid RowDefinitions="*, Auto">
-                        <ContentPresenter
+                        <NavigationOutlet
                             Grid.Row="0"
-                            Content="{TemplateBinding Content}" />
+                            Name="PART_ContentPresenter"
+                            Transition="{TemplateBinding PageTransition}"/>
                         <ItemsControl
                             Name="TabNavigation"
                             Grid.Row="1"
@@ -25,6 +26,7 @@
                                         Classes="Tab"
                                         Classes.Action="{Binding ., Converter={x:Static converters:TabContentButtonConverter.Converter}}"
                                         HorizontalAlignment="Stretch"
+                                        Padding="{Binding BottomPadding, RelativeSource={RelativeSource AncestorType=Shell}}"
                                         Command="{Binding Command}">
                                         <Border>
                                             <StackPanel Orientation="Vertical" VerticalAlignment="Center"
