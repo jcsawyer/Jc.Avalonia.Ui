@@ -38,7 +38,7 @@
                         <Border
                             Name="CheckBorder"
                             Grid.Column="1"
-                            Background="#669ace"
+                            Background="#eaeaea"
                             Width="24"
                             Height="24"
                             CornerRadius="10"
@@ -48,7 +48,12 @@
                                     <BrushTransition Duration="0:0:0.25" Property="Background"></BrushTransition>
                                 </Transitions>
                             </Border.Transitions>
-                            <PathIcon Data="{StaticResource check}" Height="12" Width="12" Foreground="#f5f5f5" />
+                            <PathIcon
+                                Data="{StaticResource check}"
+                                Height="12"
+                                Width="12"
+                                Foreground="#f5f5f5">
+                            </PathIcon>
                         </Border>
                     </Grid>
                 </Border>
@@ -75,7 +80,7 @@
             <Style Selector="^ /template/ Border#CheckBorder">
                 <Setter Property="Background" Value="{DynamicResource ListBoxItemSelectedBackground}" />
             </Style>
-
+            
             <!--  Selected Unfocused State  -->
             <Style Selector="^:not(:focus) /template/ ContentPresenter#PART_ContentPresenter">
                 <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentLowBrush}" />

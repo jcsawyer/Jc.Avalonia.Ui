@@ -49,8 +49,11 @@
                             Watermark="Search for a food...">
                             <TextBox.InnerLeftContent>
                                 <Border Padding="5 0 10 2">
-                                    <PathIcon Data="{StaticResource search}" Height="12" Width="12"
-                                              Foreground="#459dd5" />
+                                    <PathIcon
+                                        Data="{StaticResource search}"
+                                        Height="12"
+                                        Width="12"
+                                        Foreground="#459dd5" />
                                 </Border>
                             </TextBox.InnerLeftContent>
                         </TextBox>
@@ -58,11 +61,15 @@
                     <Border Padding="20">
                         <TextBlock Text="Search results" FontWeight="SemiBold"></TextBlock>
                     </Border>
-                    <ListBox>
+                    <ListBox SelectionMode="Multiple,Toggle" Name="SearchResults"
+                             ScrollViewer.VerticalScrollBarVisibility="Auto">
                         <ListBoxDescribableItem Item="Beans on Toast" Description="430 kcal"></ListBoxDescribableItem>
                         <ListBoxDescribableItem Item="Cheese on Toast" Description="532 kcal"></ListBoxDescribableItem>
                         <ListBoxDescribableItem Item="Cheese Sandwich" Description="510 kcal"></ListBoxDescribableItem>
-                        <ListBoxDescribableItem Item="Cheese Toastie" Description="535 kcal"></ListBoxDescribableItem>
+                        <ListBoxDescribableItem Item="Plain Bread" Description="58 kcal"></ListBoxDescribableItem>
+                        <ListBoxDescribableItem Item="Plain Toast" Description="58 kcal"></ListBoxDescribableItem>
+                        <ListBoxDescribableItem Item="Monster 500ml" Description="237 kcal"></ListBoxDescribableItem>
+                        <ListBoxDescribableItem Item="Shit Sandwich" Description="0 kcal"></ListBoxDescribableItem>
                     </ListBox>
                 </StackPanel>
             </TabItem>
