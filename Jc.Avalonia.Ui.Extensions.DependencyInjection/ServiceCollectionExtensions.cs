@@ -8,7 +8,7 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddJcUi(this IServiceCollection services)
     {
-        services.AddSingleton<INavigationManager, NavigationManager>(_ => (NavigationManager)NavigationManager.Current)
+        services.AddSingleton(NavigationManager.Current)
             .AddSingleton<IDialogManager, DialogManager>();
         return services;
     }

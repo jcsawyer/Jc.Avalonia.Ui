@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Animation;
 using Avalonia.Controls;
+using Avalonia.Controls.Platform;
 using Avalonia.Controls.Primitives;
 
 namespace Jc.Avalonia.Ui;
@@ -19,6 +20,15 @@ public class TabContent : ShellContent
     {
         get => GetValue(PageTransitionProperty);
         set => SetValue(PageTransitionProperty, value);
+    }
+
+    public static readonly StyledProperty<Thickness> BottomPaddingProperty = AvaloniaProperty.Register<TabContent, Thickness>(
+        nameof(BottomPadding));
+
+    public Thickness BottomPadding
+    {
+        get => GetValue(BottomPaddingProperty);
+        set => SetValue(BottomPaddingProperty, value);
     }
 
     public static readonly DirectProperty<NavigationRoot, object?> CurrentViewProperty =
@@ -46,5 +56,14 @@ public class TabContent : ShellContent
     {
         base.OnApplyTemplate(e);
         _navigationOutlet = e.NameScope.Find<NavigationOutlet>("PART_ContentPresenter");
+
+        if (TopLevel.GetTopLevel(this) is { } topLevel && topLevel.InsetsManager is { } insets)
+        {
+            insets.SafeAreaChanged += InsetsOnSafeAreaChanged;
+        }
+    }
+
+    private void InsetsOnSafeAreaChanged(object? sender, SafeAreaChangedArgs e)
+    {
     }
 }

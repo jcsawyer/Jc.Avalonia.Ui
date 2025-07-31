@@ -21,7 +21,7 @@ public sealed record NavigationElement
     
     public NavigationElementType Type { get; init; }
     
-    internal ICommand Command { get; set; }
+    public ICommand Command { get; set; }
 
     public NavigationElement()
     {

@@ -18,11 +18,9 @@
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.3.2" />
         <PackageReference Include="LiveChartsCore.SkiaSharpView.Avalonia" Version="2.0.0-rc5.4" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\Jc.Avalonia.Ui.Extensions.DependencyInjection\Jc.Avalonia.Ui.Extensions.DependencyInjection.csproj" />
       <ProjectReference Include="..\..\..\Jc.Avalonia.Ui.Fonts\Jc.Avalonia.Ui.Fonts.csproj" />
       <ProjectReference Include="..\..\..\Jc.Avalonia.Ui\Jc.Avalonia.Ui.csproj" />
     </ItemGroup>

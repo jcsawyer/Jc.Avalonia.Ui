@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Jc.Avalonia.Ui.Dialogs;
+using Jc.Avalonia.Ui.Sample.Views.Sheets;
 
 namespace Jc.Avalonia.Ui.Sample.Views.Pages;
 
@@ -14,7 +15,7 @@ public partial class Diary : UserControl
     private async void Button_OnClick(object? sender, RoutedEventArgs e)
     {
         var dialogManager = new DialogManager();
-        dialogManager.OpenSheet(new SheetContent());
+        dialogManager.OpenSheet(new AddSheet());
     }
 
     private async void Button2_OnClick(object? sender, RoutedEventArgs e)

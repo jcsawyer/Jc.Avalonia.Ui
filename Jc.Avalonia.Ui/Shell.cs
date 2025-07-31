@@ -31,15 +31,25 @@ public class Shell : TemplatedControl
         AvaloniaProperty.Register<Shell, IPageTransition>(
             nameof(PageTransition), defaultValue: new CrossFade(TimeSpan.FromSeconds(0.25)));
 
-    public static readonly StyledProperty<Thickness> BottomPaddingProperty = AvaloniaProperty.Register<Shell, Thickness>(
-        nameof(BottomPadding));
+    public static readonly StyledProperty<Thickness> BottomPaddingProperty =
+        AvaloniaProperty.Register<Shell, Thickness>(
+            nameof(BottomPadding));
 
     public Thickness BottomPadding
     {
         get => GetValue(BottomPaddingProperty);
         set => SetValue(BottomPaddingProperty, value);
     }
-    
+
+    public static readonly StyledProperty<Thickness> TopPaddingProperty = AvaloniaProperty.Register<Shell, Thickness>(
+        nameof(TopPadding));
+
+    public Thickness TopPadding
+    {
+        get => GetValue(TopPaddingProperty);
+        set => SetValue(TopPaddingProperty, value);
+    }
+
     public IPageTransition PageTransition
     {
         get => GetValue(PageTransitionProperty);
@@ -84,6 +94,10 @@ public class Shell : TemplatedControl
             if (topLevel.InsetsManager is { } insets)
             {
                 insets.SafeAreaChanged += InsetsOnSafeAreaChanged;
+                TopLevel.SetAutoSafeAreaPadding(this, false);
+                SafeAreaPadding = insets.SafeAreaPadding;
+                BottomPadding = new Thickness(0, 3, 0, SafeAreaPadding.Bottom);
+                TopPadding = new Thickness(0, SafeAreaPadding.Top, 0, 0);
             }
         }
     }
@@ -107,18 +121,6 @@ public class Shell : TemplatedControl
         base.OnApplyTemplate(e);
 
         _navigationRoot = e.NameScope.Find<NavigationRoot>("PART_ContentPresenter");
-
-        if (TopLevel.GetTopLevel(this) is { InsetsManager: { } insetsManager })
-        {
-            TopLevel.SetAutoSafeAreaPadding(this, false);
-            SafeAreaPadding = insetsManager.SafeAreaPadding;
-            BottomPadding = new  Thickness(0, 3, 0, SafeAreaPadding.Bottom);
-        }
-    }
-
-    protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
-    {
-        base.OnAttachedToVisualTree(e);
     }
 
     internal async Task AddViewAsync(object view, bool isForward, CancellationToken cancel = default)
@@ -137,7 +139,7 @@ public class Shell : TemplatedControl
         {
             return false;
         }
-        
+
         return await _navigationRoot.RemoveViewAsync(view, cancel);
     }
 
@@ -173,6 +175,8 @@ public class Shell : TemplatedControl
     private void InsetsOnSafeAreaChanged(object? sender, SafeAreaChangedArgs e)
     {
         SafeAreaPadding = e.SafeAreaPadding;
+        BottomPadding = new Thickness(0, 3, 0, SafeAreaPadding.Bottom);
+        TopPadding = new Thickness(0, SafeAreaPadding.Top, 0, 0);
     }
 
     private void TopLevelOnBackRequested(object? sender, RoutedEventArgs e)

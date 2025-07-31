@@ -5,6 +5,7 @@ using Avalonia.Collections;
 using Jc.Avalonia.Ui.Dialogs;
 using Jc.Avalonia.Ui.Sample.Controls;
 using Jc.Avalonia.Ui.Sample.Views;
+using Jc.Avalonia.Ui.Sample.Views.Sheets;
 using ReactiveUI;
 
 namespace Jc.Avalonia.Ui.Sample.ViewModels;
@@ -33,6 +34,6 @@ public class MainViewModel : ViewModelBase
 
     private static void Add()
     {
-        new DialogManager().OpenSheet(new SheetContent());
+        new DialogManager().OpenSheet(new AddSheet());
     }
 }

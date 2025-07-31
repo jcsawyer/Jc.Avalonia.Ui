@@ -83,6 +83,7 @@
                                             <Style
                                                 Selector="Button.Tab:disabled /template/ ContentPresenter#PART_ContentPresenter">
                                                 <Setter Property="Foreground" Value="#f5f5f5" />
+                                                <Setter Property="Background" Value="Transparent" />
                                             </Style>
 
                                             <Style
@@ -96,6 +97,17 @@
                                             </Style>
 
                                             <Style Selector="Button.Action">
+                                                <Setter Property="Width" Value="75"></Setter>
+                                                <Setter Property="Height" Value="75"></Setter>
+                                                <Setter Property="Foreground" Value="#f5f5f5" />
+                                                <Setter Property="Background" Value="#2EA3F2" />
+                                                <Setter Property="CornerRadius" Value="20" />
+                                                <Setter Property="BorderBrush" Value="#313131" />
+                                                <Setter Property="BorderThickness" Value="10" />
+                                                <Setter Property="Margin" Value="0 -25 0 0"></Setter>
+                                            </Style>
+                                            
+                                            <Style Selector="Button.Action:disabled /template/ ContentPresenter#PART_ContentPresenter">
                                                 <Setter Property="Width" Value="75"></Setter>
                                                 <Setter Property="Height" Value="75"></Setter>
                                                 <Setter Property="Foreground" Value="#f5f5f5" />

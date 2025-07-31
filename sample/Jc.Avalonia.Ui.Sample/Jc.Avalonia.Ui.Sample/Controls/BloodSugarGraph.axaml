@@ -17,14 +17,16 @@
                         <Grid>
                             <StackPanel>
                                 <Grid Height="300"></Grid>
-                                <ContentPresenter Content="{TemplateBinding Content}" />
+                                <ContentPresenter Content="{TemplateBinding Content}"
+                                                  Margin="{Binding TopPadding, RelativeSource={RelativeSource AncestorType=Shell}}" />
                             </StackPanel>
                             <StackPanel
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Stretch"
                                 Background="#609e6e">
                                 <Panel
-                                    Height="200">
+                                    Height="200"
+                                    Margin="{Binding TopPadding, RelativeSource={RelativeSource AncestorType=Shell}}">
                                     <StackPanel
                                         Name="largeCenter"
                                         VerticalAlignment="Center"
@@ -96,58 +98,61 @@
                         HorizontalAlignment="Stretch"
                         Background="#609e6e">
                         <Panel
-                            Name="smallSplit"
-                            Height="75"
-                            Margin="10 0">
-                            <StackPanel
-                                Name="smallSplitLeft"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Stretch"
-                                Orientation="Horizontal"
-                                Margin="200 0 0 0">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock
-                                        Text="{TemplateBinding CurrentReading}"
-                                        Foreground="#f5f5f5"
-                                        FontSize="40"
-                                        FontWeight="Light"
-                                        Margin="0,0,10,-20" />
-                                    <StackPanel
-                                        VerticalAlignment="Center"
-                                        Orientation="Vertical">
+                            Margin="{Binding TopPadding, RelativeSource={RelativeSource AncestorType=Shell}}">
+                            <Panel
+                                Name="smallSplit"
+                                Height="75"
+                                Margin="10 0">
+                                <StackPanel
+                                    Name="smallSplitLeft"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Stretch"
+                                    Orientation="Horizontal"
+                                    Margin="200 0 0 0">
+                                    <StackPanel Orientation="Horizontal">
                                         <TextBlock
-                                            Text="{TemplateBinding ReadingDirection}"
+                                            Text="{TemplateBinding CurrentReading}"
                                             Foreground="#f5f5f5"
-                                            FontSize="20"
-                                            FontWeight="ExtraLight">
-                                        </TextBlock>
-                                        <TextBlock
-                                            Text="mmol/L"
-                                            Foreground="#f5f5f5"
-                                            FontSize="12"
-                                            FontWeight="Light">
-                                        </TextBlock>
+                                            FontSize="40"
+                                            FontWeight="Light"
+                                            Margin="0,0,10,-20" />
+                                        <StackPanel
+                                            VerticalAlignment="Center"
+                                            Orientation="Vertical">
+                                            <TextBlock
+                                                Text="{TemplateBinding ReadingDirection}"
+                                                Foreground="#f5f5f5"
+                                                FontSize="20"
+                                                FontWeight="ExtraLight">
+                                            </TextBlock>
+                                            <TextBlock
+                                                Text="mmol/L"
+                                                Foreground="#f5f5f5"
+                                                FontSize="12"
+                                                FontWeight="Light">
+                                            </TextBlock>
+                                        </StackPanel>
                                     </StackPanel>
                                 </StackPanel>
-                            </StackPanel>
-                            <StackPanel
-                                Name="smallSplitRight"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Right"
-                                Orientation="Vertical"
-                                Margin="0 0 200 0">
-                                <TextBlock
-                                    TextAlignment="Right"
-                                    Foreground="#f5f5f5">
-                                    <Run Text="{TemplateBinding InsulinOnBoard}"></Run> <Run Text="units"></Run>
-                                </TextBlock>
-                                <TextBlock
-                                    TextAlignment="Right"
-                                    Text="on-board"
-                                    FontSize="12"
-                                    Foreground="#f5f5f5">
-                                </TextBlock>
-                            </StackPanel>
+                                <StackPanel
+                                    Name="smallSplitRight"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Right"
+                                    Orientation="Vertical"
+                                    Margin="0 0 200 0">
+                                    <TextBlock
+                                        TextAlignment="Right"
+                                        Foreground="#f5f5f5">
+                                        <Run Text="{TemplateBinding InsulinOnBoard}"></Run> <Run Text="units"></Run>
+                                    </TextBlock>
+                                    <TextBlock
+                                        TextAlignment="Right"
+                                        Text="on-board"
+                                        FontSize="12"
+                                        Foreground="#f5f5f5">
+                                    </TextBlock>
+                                </StackPanel>
+                            </Panel>
                         </Panel>
                     </StackPanel>
                 </Grid>

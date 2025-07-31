@@ -19,7 +19,7 @@
         TargetRangeLower="4"
         TargetRangeUpper="10">
         <Panel Height="1200">
-            <TextBlock Text="TEST"></TextBlock>
+            <Button Content="TEST" Click="Button_OnClick" VerticalAlignment="Top"></Button>
         </Panel>
     </controls:BloodSugarGraph>
 </UserControl>
