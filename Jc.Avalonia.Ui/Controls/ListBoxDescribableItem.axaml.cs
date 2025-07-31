@@ -23,4 +23,13 @@ public partial class ListBoxDescribableItem : ListBoxItem
         get => GetValue(DescriptionProperty);
         set => SetValue(DescriptionProperty, value);
     }
+
+    public static readonly StyledProperty<string?> SearchTermProperty = AvaloniaProperty.Register<ListBoxDescribableItem, string?>(
+        nameof(SearchTerm));
+
+    public string? SearchTerm
+    {
+        get => GetValue(SearchTermProperty);
+        set => SetValue(SearchTermProperty, value);
+    }
 }

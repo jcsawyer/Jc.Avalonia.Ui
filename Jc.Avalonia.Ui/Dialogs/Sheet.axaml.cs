@@ -7,14 +7,14 @@ using Avalonia.VisualTree;
 
 namespace Jc.Avalonia.Ui.Dialogs;
 
-internal partial class Sheet : UserControl
+public partial class Sheet : UserControl
 {
     public static readonly StyledProperty<double> SheetHeightProperty = AvaloniaProperty.Register<Sheet, double>(
         nameof(SheetHeight), coerce: (element, value) =>
         {
             if (element is Sheet sheet)
             {
-                sheet.ContentHeight = value - (value / 5) - 35;
+                sheet.ContentHeight = value - (value / 5) - 75;
                 var sheetControl = sheet.GetVisualDescendants().OfType<Border>()
                     .FirstOrDefault(x => x.Name == "Sheet");
                 if (sheetControl is { } sheetBorder && !sheet.IsOpen)
@@ -90,7 +90,7 @@ internal partial class Sheet : UserControl
         ((TranslateTransform)sheet.RenderTransform!).Y = SheetHeight;
         _animtationTimer.Tick += AnimateTick;
 
-        ContentHeight = SheetHeight - (SheetHeight / 5) - 35;
+        ContentHeight = SheetHeight - (SheetHeight / 5) - 75;
     }
 
     private void AnimateTick(object? sender, EventArgs e)

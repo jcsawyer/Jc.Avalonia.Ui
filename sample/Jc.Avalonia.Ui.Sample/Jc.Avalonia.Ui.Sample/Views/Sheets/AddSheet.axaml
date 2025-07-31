@@ -3,7 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Jc.Avalonia.Ui.Sample.Views.Sheets.AddSheet">
+             xmlns:dialogs="clr-namespace:Jc.Avalonia.Ui.Dialogs;assembly=Jc.Avalonia.Ui"
+             xmlns:viewModels="clr-namespace:Jc.Avalonia.Ui.Sample.ViewModels"
+             x:Class="Jc.Avalonia.Ui.Sample.Views.Sheets.AddSheet"
+             x:DataType="viewModels:AddSheetViewModel">
     <Grid>
         <TabControl
             Grid.Row="1"
@@ -11,8 +14,11 @@
             FontSize="12"
             FontWeight="Light">
             <TabItem Header="Food">
-                <StackPanel>
+                <Grid 
+                    RowDefinitions="Auto, Auto, Auto, *"
+                    Height="{Binding ContentHeight, RelativeSource={RelativeSource AncestorType=dialogs:Sheet}}" VerticalAlignment="Top">
                     <Border
+                        Grid.Row="0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Top"
                         Background="#f3f3f3"
@@ -43,9 +49,11 @@
                         </ScrollViewer>
                     </Border>
                     <Border
+                        Grid.Row="1"
                         Margin="25 15 25 0">
                         <TextBox
                             Name="Search"
+                            Text="{Binding SearchTerm}"
                             Watermark="Search for a food...">
                             <TextBox.InnerLeftContent>
                                 <Border Padding="5 0 10 2">
@@ -58,20 +66,28 @@
                             </TextBox.InnerLeftContent>
                         </TextBox>
                     </Border>
-                    <Border Padding="20">
+                    <Border
+                        Grid.Row="2"
+                        Padding="20">
                         <TextBlock Text="Search results" FontWeight="SemiBold"></TextBlock>
                     </Border>
-                    <ListBox SelectionMode="Multiple,Toggle" Name="SearchResults"
-                             ScrollViewer.VerticalScrollBarVisibility="Auto">
-                        <ListBoxDescribableItem Item="Beans on Toast" Description="430 kcal"></ListBoxDescribableItem>
-                        <ListBoxDescribableItem Item="Cheese on Toast" Description="532 kcal"></ListBoxDescribableItem>
-                        <ListBoxDescribableItem Item="Cheese Sandwich" Description="510 kcal"></ListBoxDescribableItem>
-                        <ListBoxDescribableItem Item="Plain Bread" Description="58 kcal"></ListBoxDescribableItem>
-                        <ListBoxDescribableItem Item="Plain Toast" Description="58 kcal"></ListBoxDescribableItem>
-                        <ListBoxDescribableItem Item="Monster 500ml" Description="237 kcal"></ListBoxDescribableItem>
-                        <ListBoxDescribableItem Item="Shit Sandwich" Description="0 kcal"></ListBoxDescribableItem>
+                    <ListBox
+                        Grid.Row="3"
+                        SelectionMode="Multiple,Toggle"
+                        Name="SearchResults">
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Beans on Toast" Description="430 kcal"></ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Cheese on Toast" Description="532 kcal"></ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Cheese Sandwich" Description="510 kcal"></ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Plain Bread" Description="58 kcal"></ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Plain Toast" Description="58 kcal"></ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Monster 500ml" Description="237 kcal"></ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Shit Sandwich" Description="0 kcal"></ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Shit Sandwich" Description="0 kcal"></ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Shit Sandwich" Description="0 kcal"></ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Shit Sandwich" Description="0 kcal"></ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Shit Sandwich" Description="0 kcal"></ListBoxDescribableItem>
                     </ListBox>
-                </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Header="Sugars">
 

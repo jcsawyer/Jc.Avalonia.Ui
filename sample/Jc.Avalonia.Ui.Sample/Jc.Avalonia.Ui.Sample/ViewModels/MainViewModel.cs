@@ -21,6 +21,10 @@ public class MainViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _graphReadings, value);
     }
     
+    public string SearchTerm { get; } = "on";
+
+    public string FullText { get; } = "Beans on Toast";
+    
     public MainViewModel()
     {
         GraphReadings.AddRange(Enumerable.Range(0, 50).Select(i =>
@@ -34,6 +38,6 @@ public class MainViewModel : ViewModelBase
 
     private static void Add()
     {
-        new DialogManager().OpenSheet(new AddSheet());
+        new DialogManager().OpenSheet(new AddSheet() { DataContext = new AddSheetViewModel() });
     }
 }
