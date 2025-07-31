@@ -7,6 +7,9 @@
             <SolidColorBrush x:Key="TabBarBackground">#313131</SolidColorBrush>
             <SolidColorBrush x:Key="TabBarActive">#669ace</SolidColorBrush>
             
+            <!-- Control -->
+            <CornerRadius x:Key="ControlCornerRadius">10</CornerRadius>
+            
             <!-- System Control -->
             <SolidColorBrush x:Key="SystemControlHighlightListLowBrush">#eeeeee</SolidColorBrush>
             <SolidColorBrush x:Key="SystemControlHighlightListAccentLowBrush">#f5f5f5</SolidColorBrush>
@@ -19,7 +22,6 @@
             <SolidColorBrush x:Key="ButtonForeground">#000000</SolidColorBrush>
             <SolidColorBrush x:Key="ButtonBorderBrush">Transparent</SolidColorBrush>
             <Thickness x:Key="ButtonBorderThemeThickness">0</Thickness>
-            <CornerRadius x:Key="ControlCornerRadius">10</CornerRadius>
             <Thickness x:Key="ButtonPadding">10</Thickness>
             <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#eeeeee</SolidColorBrush>
             <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">Transparent</SolidColorBrush>
@@ -42,6 +44,52 @@
             <SolidColorBrush x:Key="AccentButtonBackgroundDisabled">#669ace</SolidColorBrush>
             <SolidColorBrush x:Key="ButtonBorderBrushAccentDisabled">Transparent</SolidColorBrush>
             <SolidColorBrush x:Key="ButtonForegroundAccentDisabled">#A0A0A0</SolidColorBrush>
+            
+            <!-- ComboBox -->
+            <SolidColorBrush x:Key="ComboBoxBackground">#f5f5f5</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxForeground">#000000</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxPlaceHolderForeground">#A0A0A0</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxPlaceHolderForegroundPointerOver">#A0A0A0</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxPlaceHolderForegroundPressed">#A0A0A0</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxBorderBrush">Transparent</SolidColorBrush>
+            <Thickness x:Key="ComboBoxBorderThemeThickness">0</Thickness>
+            <Thickness x:Key="ComboBoxCornerRadius">10</Thickness>
+            <Thickness x:Key="ComboBoxPadding">12</Thickness>
+            <SolidColorBrush x:Key="ComboBoxBackgroundPointerOver">#eeeeee</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxBorderBrushPointerOver">Transparent</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxForegroundPointerOver">#000000</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxBackgroundPressed">#eaeaea</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxBorderBrushPressed">Transparent</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxForegroundPressed">#000000</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxBackgroundDisabled">#f5f5f5</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxBorderBrushDisabled">Transparent</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxForegroundDisabled">#A0A0A0</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxItemPill">#669ace</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxItemPillPointerOver">#5a8ec1</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxItemPillPressed">#669ace</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxItemPillDisabled">#669ace</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxItemBackground">#f5f5f5</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxItemSelectedBackground">#66a876</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxDropDownGlyphForeground">#a8a8a8</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxDropDownBorderBrush">Transparent</SolidColorBrush>
+            <SolidColorBrush x:Key="ComboBoxDropDownBackground">#f5f5f5</SolidColorBrush>
+            
+            <!-- Expander -->
+            <SolidColorBrush x:Key="ExpanderHeaderBackground">#f5f5f5</SolidColorBrush>
+            <SolidColorBrush x:Key="ExpanderHeaderForeground">#000000</SolidColorBrush>
+            <SolidColorBrush x:Key="ExpanderHeaderBorderBrush">Transparent</SolidColorBrush>
+            <Thickness x:Key="ExpanderHeaderBorderThickness">0</Thickness>
+            <Thickness x:Key="ExpanderHeaderPadding">0</Thickness>
+            <SolidColorBrush x:Key="ExpanderHeaderBackgroundPointerOver">#eeeeee</SolidColorBrush>
+            <SolidColorBrush x:Key="ExpanderHeaderForegroundPointerOver">#000000</SolidColorBrush>
+            <SolidColorBrush x:Key="ExpanderHeaderBackgroundPressed">#eaeaea</SolidColorBrush>
+            <SolidColorBrush x:Key="ExpanderHeaderForegroundPressed">#000000</SolidColorBrush>
+            <SolidColorBrush x:Key="ExpanderChevronForeground">#a8a8a8</SolidColorBrush>
+            <SolidColorBrush x:Key="ExpanderChevronBackgroundPressed">Transparent</SolidColorBrush>
+            <SolidColorBrush x:Key="ExpanderChevronBackground">Transparent</SolidColorBrush>
+            <SolidColorBrush x:Key="ExpanderChevronBackgroundPointerOver">Transparent</SolidColorBrush>
+            <SolidColorBrush x:Key="ExpanderContentBackground">#f5f5f5</SolidColorBrush>
+            <SolidColorBrush x:Key="ExpanderContentBorderBrush">Transparent</SolidColorBrush>
             
             <!-- ListBoxItem -->
             <SolidColorBrush x:Key="ListBoxItemBackground">#f5f5f5</SolidColorBrush>

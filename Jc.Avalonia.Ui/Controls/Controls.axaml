@@ -4,6 +4,10 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <MergeResourceInclude Source="/Controls/Button.axaml" />
+                <MergeResourceInclude Source="/Controls/ComboBox.axaml" />
+                <MergeResourceInclude Source="/Controls/ComboBoxDescribableItem.axaml" />
+                <MergeResourceInclude Source="/Controls/ExpandableComboBox.axaml" />
+                <MergeResourceInclude Source="/Controls/Expander.axaml" />
                 <MergeResourceInclude Source="/Controls/ListBox.axaml" />
                 <MergeResourceInclude Source="/Controls/ListBoxDescribableItem.axaml" />
                 <MergeResourceInclude Source="/Controls/ListBoxItem.axaml" />

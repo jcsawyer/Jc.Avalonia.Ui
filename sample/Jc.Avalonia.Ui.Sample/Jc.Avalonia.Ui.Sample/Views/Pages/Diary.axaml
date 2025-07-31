@@ -2,7 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:avalonia="clr-namespace:LiveChartsCore.SkiaSharpView.Avalonia;assembly=LiveChartsCore.SkiaSharpView.Avalonia"
              xmlns:viewModels="clr-namespace:Jc.Avalonia.Ui.Sample.ViewModels"
              xmlns:sample="clr-namespace:Jc.Avalonia.Ui.Sample"
              xmlns:controls="clr-namespace:Jc.Avalonia.Ui.Sample.Controls"
@@ -18,8 +17,21 @@
         InsulinOnBoard="4"
         TargetRangeLower="4"
         TargetRangeUpper="10">
-        <Panel Height="1200">
+        <StackPanel Height="1200">
             <Button Content="TEST" Click="Button_OnClick" VerticalAlignment="Top"></Button>
-        </Panel>
+            <StackPanel Spacing="5">
+                <ComboBox PlaceholderText="Placeholder">
+                    <ComboBoxItem Content="Item1" />
+                    <ComboBoxItem Content="Item2" />
+                    <ComboBoxItem Content="Item3" />
+                </ComboBox>
+
+                <ComboBox IsEnabled="False" />
+
+                <Border Height="1" Background="Gray" />
+
+                <ComboBoxItem Content="Item1" />
+            </StackPanel>
+        </StackPanel>
     </controls:BloodSugarGraph>
 </UserControl>

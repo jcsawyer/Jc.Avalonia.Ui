@@ -93,6 +93,10 @@
 
             </TabItem>
             <TabItem Header="Injection">
+                <ExpandableComboBox PlaceholderText="" FieldName="Insulin">
+                    <ComboBoxDescribableItem Content="Levemir" Item="Levemir" Description="Basal" />
+                    <ComboBoxDescribableItem Content="Fiasp" Item="Fiasp" Description="Bolus" />
+                </ExpandableComboBox>
             </TabItem>
         </TabControl>
     </Grid>
