@@ -6,6 +6,46 @@
             <SolidColorBrush x:Key="PageBackground">White</SolidColorBrush>
             <SolidColorBrush x:Key="TabBarBackground">#313131</SolidColorBrush>
             <SolidColorBrush x:Key="TabBarActive">#669ace</SolidColorBrush>
+            
+            <!-- System Control -->
+            <SolidColorBrush x:Key="SystemControlHighlightListLowBrush">#eeeeee</SolidColorBrush>
+            <SolidColorBrush x:Key="SystemControlHighlightListAccentLowBrush">#f5f5f5</SolidColorBrush>
+            <SolidColorBrush x:Key="SystemControlHighlightListMediumBrush">#eaeaea</SolidColorBrush>
+            <SolidColorBrush x:Key="SystemControlHighlightListAccentMediumBrush">#eeeeee</SolidColorBrush>
+            <SolidColorBrush x:Key="SystemControlHighlightListAccentHighBrush">#eeeeee</SolidColorBrush>
+            
+            <!-- Button -->
+            <SolidColorBrush x:Key="ButtonBackground">#f5f5f5</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonForeground">#000000</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonBorderBrush">Transparent</SolidColorBrush>
+            <Thickness x:Key="ButtonBorderThemeThickness">0</Thickness>
+            <CornerRadius x:Key="ControlCornerRadius">10</CornerRadius>
+            <Thickness x:Key="ButtonPadding">10</Thickness>
+            <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#eeeeee</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">Transparent</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonForegroundPointerOver">#000000</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonBackgroundPressed">#eaeaea</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonBorderBrushPressed">Transparent</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonForegroundPressed">#000000</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonBackgroundDisabled">#f5f5f5</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonBorderBrushDisabled">Transparent</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonForegroundDisabled">#A0A0A0</SolidColorBrush>
+            <SolidColorBrush x:Key="AccentButtonBackground">#669ace</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonBorderBrushAccent">#669ace</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonForegroundAccent">White</SolidColorBrush>
+            <SolidColorBrush x:Key="AccentButtonBackgroundPointerOver">#5a8ec1</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonBorderBrushAccentPointerOver">Transparent</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonForegroundAccentPointerOver">White</SolidColorBrush>
+            <SolidColorBrush x:Key="AccentButtonBackgroundPressed">#669ace</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonBorderBrushAccentPressed">#669ace</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonForegroundAccentPressed">White</SolidColorBrush>
+            <SolidColorBrush x:Key="AccentButtonBackgroundDisabled">#669ace</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonBorderBrushAccentDisabled">Transparent</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonForegroundAccentDisabled">#A0A0A0</SolidColorBrush>
+            
+            <!-- ListBoxItem -->
+            <SolidColorBrush x:Key="ListBoxItemBackground">#f5f5f5</SolidColorBrush>
+            <SolidColorBrush x:Key="ListBoxItemSelectedBackground">#66a876</SolidColorBrush>
         </ResourceDictionary>
         <ResourceDictionary x:Key="Dark">
             <SolidColorBrush x:Key="ShellBackground">White</SolidColorBrush>

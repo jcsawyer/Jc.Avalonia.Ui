@@ -1,0 +1,93 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:ClassModifier="internal">
+    <Design.PreviewWith>
+        <Border Padding="0">
+            <ListBox>
+                <ListBoxDescribableItem Item="Item 1" Description="Item 1 description"></ListBoxDescribableItem>
+                <ListBoxDescribableItem Item="Item 2" Description="Item 2 description"></ListBoxDescribableItem>
+                <ListBoxDescribableItem Item="Disabled Item" Description="Disabled item description" IsEnabled="False">Disabled</ListBoxDescribableItem>
+            </ListBox>
+        </Border>
+    </Design.PreviewWith>
+    <ControlTheme x:Key="{x:Type ListBoxDescribableItem}" TargetType="ListBoxDescribableItem">
+        <Setter Property="Padding" Value="{DynamicResource ListBoxItemPadding}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Name="ListBotItemRoot"
+                    Padding="10"
+                    Margin="10"
+                    CornerRadius="10"
+                    Background="{DynamicResource ListBoxItemBackground}">
+                    <Grid ColumnDefinitions="*, Auto">
+                        <StackPanel
+                            Grid.Column="0"
+                            Orientation="Vertical">
+                            <TextBlock
+                                Text="{TemplateBinding Item}"
+                                Foreground="#181818"
+                                FontSize="14" />
+                            <TextBlock
+                                Text="{TemplateBinding Description}"
+                                Foreground="#a2a2a2"
+                                IsVisible="{TemplateBinding Description}"
+                                FontSize="12"
+                                Margin="0 5 0 0" />
+                        </StackPanel>
+                        <Border
+                            Name="CheckBorder"
+                            Grid.Column="1"
+                            Background="#669ace"
+                            Width="24"
+                            Height="24"
+                            CornerRadius="10"
+                            Margin="10 0">
+                            <PathIcon Data="{StaticResource check}" Height="12" Width="12" Foreground="#f5f5f5" />
+                        </Border>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource SystemControlDisabledBaseMediumLowBrush}" />
+        </Style>
+
+        <!--  PointerOver State  -->
+        <Style Selector="^:pointerover /template/ Border#ListBotItemRoot">
+            <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListLowBrush}" />
+        </Style>
+
+        <!--  Pressed State  -->
+        <Style Selector="^:pressed /template/ Border#ListBotItemRoot">
+            <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListMediumBrush}" />
+        </Style>
+
+        <!--  Selected State  -->
+        <Style Selector="^:selected">
+
+            <Style Selector="^ /template/ Border#CheckBorder">
+                <Setter Property="Background" Value="{DynamicResource ListBoxItemSelectedBackground}" />
+            </Style>
+
+            <!--  Selected Unfocused State  -->
+            <Style Selector="^:not(:focus) /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentLowBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+            </Style>
+
+            <!--  Selected PointerOver State  -->
+            <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentMediumBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+            </Style>
+
+            <!--  Selected Pressed State  -->
+            <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentHighBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
