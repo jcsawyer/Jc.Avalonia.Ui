@@ -52,7 +52,7 @@
                                 FontSize="14" />
                             <TextBlock
                                 Text="{TemplateBinding Description}"
-                                Foreground="#a2a2a2"
+                                Foreground="{DynamicResource TextControlPlaceholderForeground}"
                                 IsVisible="{TemplateBinding Description}"
                                 FontSize="12"
                                 Margin="0 5 0 0" />

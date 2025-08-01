@@ -9,7 +9,7 @@
             
             <!-- Control -->
             <CornerRadius x:Key="ControlCornerRadius">10</CornerRadius>
-            
+            <SolidColorBrush x:Key="TextControlPlaceholderForeground">#a2a2a2</SolidColorBrush>
             <!-- System Control -->
             <SolidColorBrush x:Key="SystemControlHighlightListLowBrush">#eeeeee</SolidColorBrush>
             <SolidColorBrush x:Key="SystemControlHighlightListAccentLowBrush">#f5f5f5</SolidColorBrush>
@@ -73,6 +73,13 @@
             <SolidColorBrush x:Key="ComboBoxDropDownGlyphForeground">#a8a8a8</SolidColorBrush>
             <SolidColorBrush x:Key="ComboBoxDropDownBorderBrush">Transparent</SolidColorBrush>
             <SolidColorBrush x:Key="ComboBoxDropDownBackground">#f5f5f5</SolidColorBrush>
+            
+            <!-- DatePicker -->
+            <Thickness x:Key="DatePickerHostPadding">5 2</Thickness>
+            <Thickness x:Key="DatePickerHostMonthPadding">5 2</Thickness>
+            <SolidColorBrush x:Key="DatePickerButtonBackgroundPressed">#eaeaea</SolidColorBrush>
+            <SolidColorBrush x:Key="DatePickerButtonBackgroundDisabled">#f5f5f5</SolidColorBrush>
+            <SolidColorBrush x:Key="DatePickerButtonForegroundDisabled">#A0A0A0</SolidColorBrush>
             
             <!-- Expander -->
             <SolidColorBrush x:Key="ExpanderHeaderBackground">#f5f5f5</SolidColorBrush>

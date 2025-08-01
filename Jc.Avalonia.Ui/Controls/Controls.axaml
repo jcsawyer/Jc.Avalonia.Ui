@@ -6,6 +6,7 @@
                 <MergeResourceInclude Source="/Controls/Button.axaml" />
                 <MergeResourceInclude Source="/Controls/ComboBox.axaml" />
                 <MergeResourceInclude Source="/Controls/ComboBoxDescribableItem.axaml" />
+                <MergeResourceInclude Source="/Controls/DatePicker.axaml" />
                 <MergeResourceInclude Source="/Controls/ExpandableComboBox.axaml" />
                 <MergeResourceInclude Source="/Controls/Expander.axaml" />
                 <MergeResourceInclude Source="/Controls/ListBox.axaml" />
