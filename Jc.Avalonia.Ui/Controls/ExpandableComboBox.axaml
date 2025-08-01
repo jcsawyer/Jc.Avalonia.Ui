@@ -58,8 +58,9 @@
                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                            Margin="{TemplateBinding Padding}"
                                            Text="{TemplateBinding PlaceholderText}"
+                                           FontSize="14"
                                            Foreground="{TemplateBinding PlaceholderForeground}"
-                                           IsVisible="{TemplateBinding SelectionBoxItem, Converter={x:Static ObjectConverters.IsNull}}" />
+                                           IsVisible="{TemplateBinding SelectionBoxItem, Converter={x:Static ObjectConverters.IsNull}}"/>
 
                                 <StackPanel Grid.Row="1"
                                             Grid.Column="0"
@@ -71,6 +72,7 @@
                                                       ContentTemplate="{TemplateBinding ItemTemplate}"
                                                       HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                       VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                      Height="14"
                                                       FontSize="14"/>
                                     <TextBlock
                                         Text="{TemplateBinding FieldName}"

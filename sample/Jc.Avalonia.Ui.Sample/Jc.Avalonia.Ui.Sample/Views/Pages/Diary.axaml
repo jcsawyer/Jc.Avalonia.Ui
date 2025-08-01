@@ -20,17 +20,7 @@
         <StackPanel Height="1200">
             <Button Content="TEST" Click="Button_OnClick" VerticalAlignment="Top"></Button>
             <StackPanel Spacing="5">
-                <ComboBox PlaceholderText="Placeholder">
-                    <ComboBoxItem Content="Item1" />
-                    <ComboBoxItem Content="Item2" />
-                    <ComboBoxItem Content="Item3" />
-                </ComboBox>
 
-                <ComboBox IsEnabled="False" />
-
-                <Border Height="1" Background="Gray" />
-
-                <ComboBoxItem Content="Item1" />
             </StackPanel>
         </StackPanel>
     </controls:BloodSugarGraph>

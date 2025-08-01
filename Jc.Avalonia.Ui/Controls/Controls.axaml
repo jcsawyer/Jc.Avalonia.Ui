@@ -16,6 +16,7 @@
                 <MergeResourceInclude Source="/Controls/TabContent.axaml" />
                 <MergeResourceInclude Source="/Controls/TabControl.axaml" />
                 <MergeResourceInclude Source="/Controls/TextBox.axaml" />
+                <MergeResourceInclude Source="/Controls/TextBoxDescribable.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>

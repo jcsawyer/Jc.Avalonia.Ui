@@ -5,6 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:dialogs="clr-namespace:Jc.Avalonia.Ui.Dialogs;assembly=Jc.Avalonia.Ui"
              xmlns:viewModels="clr-namespace:Jc.Avalonia.Ui.Sample.ViewModels"
+             xmlns:behaviors="clr-namespace:Jc.Avalonia.Ui.Behaviors;assembly=Jc.Avalonia.Ui"
              x:Class="Jc.Avalonia.Ui.Sample.Views.Sheets.AddSheet"
              x:DataType="viewModels:AddSheetViewModel">
     <Grid>
@@ -14,9 +15,10 @@
             FontSize="12"
             FontWeight="Light">
             <TabItem Header="Food">
-                <Grid 
+                <Grid
                     RowDefinitions="Auto, Auto, Auto, *"
-                    Height="{Binding ContentHeight, RelativeSource={RelativeSource AncestorType=dialogs:Sheet}}" VerticalAlignment="Top">
+                    Height="{Binding ContentHeight, RelativeSource={RelativeSource AncestorType=dialogs:Sheet}}"
+                    VerticalAlignment="Top">
                     <Border
                         Grid.Row="0"
                         HorizontalAlignment="Stretch"
@@ -75,28 +77,60 @@
                         Grid.Row="3"
                         SelectionMode="Multiple,Toggle"
                         Name="SearchResults">
-                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Beans on Toast" Description="430 kcal"></ListBoxDescribableItem>
-                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Cheese on Toast" Description="532 kcal"></ListBoxDescribableItem>
-                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Cheese Sandwich" Description="510 kcal"></ListBoxDescribableItem>
-                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Plain Bread" Description="58 kcal"></ListBoxDescribableItem>
-                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Plain Toast" Description="58 kcal"></ListBoxDescribableItem>
-                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Monster 500ml" Description="237 kcal"></ListBoxDescribableItem>
-                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Shit Sandwich" Description="0 kcal"></ListBoxDescribableItem>
-                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Shit Sandwich" Description="0 kcal"></ListBoxDescribableItem>
-                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Shit Sandwich" Description="0 kcal"></ListBoxDescribableItem>
-                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Shit Sandwich" Description="0 kcal"></ListBoxDescribableItem>
-                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Shit Sandwich" Description="0 kcal"></ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Beans on Toast"
+                                                Description="430 kcal">
+                        </ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Cheese on Toast"
+                                                Description="532 kcal">
+                        </ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Cheese Sandwich"
+                                                Description="510 kcal">
+                        </ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Plain Bread"
+                                                Description="58 kcal">
+                        </ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Plain Toast"
+                                                Description="58 kcal">
+                        </ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Monster 500ml"
+                                                Description="237 kcal">
+                        </ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Shit Sandwich"
+                                                Description="0 kcal">
+                        </ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Shit Sandwich"
+                                                Description="0 kcal">
+                        </ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Shit Sandwich"
+                                                Description="0 kcal">
+                        </ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Shit Sandwich"
+                                                Description="0 kcal">
+                        </ListBoxDescribableItem>
+                        <ListBoxDescribableItem SearchTerm="{Binding SearchTerm}" Item="Shit Sandwich"
+                                                Description="0 kcal">
+                        </ListBoxDescribableItem>
                     </ListBox>
                 </Grid>
             </TabItem>
             <TabItem Header="Sugars">
-
+                <StackPanel>
+                    <TimePicker />
+                    <DatePicker />
+                </StackPanel>
             </TabItem>
             <TabItem Header="Injection">
-                <ExpandableComboBox PlaceholderText="" FieldName="Insulin">
-                    <ComboBoxDescribableItem Content="Levemir" Item="Levemir" Description="Basal" />
-                    <ComboBoxDescribableItem Content="Fiasp" Item="Fiasp" Description="Bolus" />
-                </ExpandableComboBox>
+                <StackPanel>
+                    <ExpandableComboBox PlaceholderText="Select an insulin..." FieldName="Insulin">
+                        <ComboBoxDescribableItem Content="Levemir" Item="Levemir" Description="Basal" />
+                        <ComboBoxDescribableItem Content="Fiasp" Item="Fiasp" Description="Bolus" />
+                    </ExpandableComboBox>
+                    <TextBoxDescribable Watermark="Enter units of insulin..." Label="Units">
+                        <Interaction.Behaviors>
+                            <behaviors:NumberBoxBehavior />
+                        </Interaction.Behaviors>
+                    </TextBoxDescribable>
+                </StackPanel>
             </TabItem>
         </TabControl>
     </Grid>

@@ -9,11 +9,11 @@
                     Padding="{DynamicResource ComboBoxDropdownBorderPadding}"
                     CornerRadius="{DynamicResource OverlayCornerRadius}">
                 <StackPanel HorizontalAlignment="Stretch">
-                    <ComboBoxDescribableItem>Item 1</ComboBoxDescribableItem>
-                    <ComboBoxDescribableItem>Item 2 long</ComboBoxDescribableItem>
-                    <ComboBoxDescribableItem IsSelected="True">Item 3</ComboBoxDescribableItem>
-                    <ComboBoxDescribableItem IsEnabled="False">Item 4</ComboBoxDescribableItem>
-                    <ComboBoxDescribableItem IsSelected="True" IsEnabled="False">Item 5</ComboBoxDescribableItem>
+                    <ComboBoxDescribableItem Item="Item 1" Description="Item 1 description">Item 1</ComboBoxDescribableItem>
+                    <ComboBoxDescribableItem Item="Item 2 long" Description="Item 2 description is a little longer...">Item 2 long</ComboBoxDescribableItem>
+                    <ComboBoxDescribableItem Item="Item 3" Description="Item 3 is selected..." IsSelected="True">Item 3</ComboBoxDescribableItem>
+                    <ComboBoxDescribableItem Item="Item 4" Description="This one is disabled..." IsEnabled="False">Item 4</ComboBoxDescribableItem>
+                    <ComboBoxDescribableItem Item="Item 5" Description="This one is selected AND disabled..." IsSelected="True" IsEnabled="False">Item 5</ComboBoxDescribableItem>
                 </StackPanel>
             </Border>
         </Border>
