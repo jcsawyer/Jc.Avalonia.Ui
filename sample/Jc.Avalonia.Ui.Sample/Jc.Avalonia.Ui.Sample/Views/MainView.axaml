@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Jc.Avalonia.Ui.Sample.ViewModels"
              xmlns:pages="clr-namespace:Jc.Avalonia.Ui.Sample.Views.Pages"
+             xmlns:controls="https://github.com/jcsawyer"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="600"
              x:Class="Jc.Avalonia.Ui.Sample.Views.MainView"
              x:DataType="vm:MainViewModel"
@@ -13,34 +14,36 @@
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainViewModel />
     </Design.DataContext>
-    <Shell>
-        <TabBar>
-            <TabContent Route="Home">
-                <ShellContent
-                    Title="Diary"
-                    Icon="book_open_variant_outline"
-                    Route="Diary"
-                    ContentTemplate="pages:Diary" />
-                <ShellContent
-                    Title="Insights"
-                    Icon="brain"
-                    Route="Insights"
-                    ContentTemplate="pages:Insights" />
-                <TabBarButton
-                    Icon="plus"
-                    Route="Add"
-                    Command="{x:Static vm:MainViewModel.AddCommand}" />
-                <ShellContent
-                    Title="Sugars"
-                    Icon="water_outline"
-                    Route="Sugars"
-                    ContentTemplate="pages:Sugars" />
-                <ShellContent
-                    Title="Food"
-                    Icon="food_outline"
-                    Route="Food"
-                    ContentTemplate="pages:Food" />
-            </TabContent>
-        </TabBar>
-    </Shell>
+    <controls:DialogHost UseSafePadding="False">
+        <Shell>
+            <TabBar>
+                <TabContent Route="Home">
+                    <ShellContent
+                        Title="Diary"
+                        Icon="book_open_variant_outline"
+                        Route="Diary"
+                        ContentTemplate="pages:Diary" />
+                    <ShellContent
+                        Title="Insights"
+                        Icon="brain"
+                        Route="Insights"
+                        ContentTemplate="pages:Insights" />
+                    <TabBarButton
+                        Icon="plus"
+                        Route="Add"
+                        Command="{x:Static vm:MainViewModel.AddCommand}" />
+                    <ShellContent
+                        Title="Sugars"
+                        Icon="water_outline"
+                        Route="Sugars"
+                        ContentTemplate="pages:Sugars" />
+                    <ShellContent
+                        Title="Food"
+                        Icon="food_outline"
+                        Route="Food"
+                        ContentTemplate="pages:Food" />
+                </TabContent>
+            </TabBar>
+        </Shell>
+    </controls:DialogHost>
 </UserControl>

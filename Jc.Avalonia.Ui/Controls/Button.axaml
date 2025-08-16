@@ -3,7 +3,7 @@
                     x:ClassModifier="internal">
   <Design.PreviewWith>
     <Border Padding="20">
-      <StackPanel Spacing="20">
+      <StackPanel>
         <Button Content="Click Me!" />
         <Button Classes="accent" Content="Click Me!" />
         <Button IsEnabled="False" Content="Disabled!" />
@@ -17,8 +17,10 @@
     <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrush}" />
     <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThemeThickness}" />
     <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
-    <Setter Property="Padding" Value="{DynamicResource ButtonPadding}" />
-    <Setter Property="HorizontalAlignment" Value="Left" />
+    <Setter Property="Padding" Value="10" />
+    <Setter Property="Margin" Value="10"></Setter>
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
     <Setter Property="VerticalAlignment" Value="Center" />
     <Setter Property="RenderTransform" Value="none" />
     <Setter Property="Transitions">

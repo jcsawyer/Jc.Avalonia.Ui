@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Input;
+using Avalonia;
 using Avalonia.Collections;
 using Jc.Avalonia.Ui.Dialogs;
 using Jc.Avalonia.Ui.Sample.Controls;
 using Jc.Avalonia.Ui.Sample.Views;
 using Jc.Avalonia.Ui.Sample.Views.Sheets;
+using Jc.PopupView.Avalonia.Services;
 using ReactiveUI;
 
 namespace Jc.Avalonia.Ui.Sample.ViewModels;
@@ -38,6 +40,6 @@ public class MainViewModel : ViewModelBase
 
     private static void Add()
     {
-        new DialogManager().OpenSheet(new AddSheet() { DataContext = new AddSheetViewModel() });
+        new DialogService().OpenSheet(new AddSheet() { DataContext = new AddSheetViewModel() }, sheet => sheet.Padding = Thickness.Parse("0"));
     }
 }
