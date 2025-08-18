@@ -3,14 +3,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             xmlns:dialogs="clr-namespace:Jc.Avalonia.Ui.Dialogs;assembly=Jc.Avalonia.Ui"
              xmlns:viewModels="clr-namespace:Jc.Avalonia.Ui.Sample.ViewModels"
              xmlns:behaviors="clr-namespace:Jc.Avalonia.Ui.Behaviors;assembly=Jc.Avalonia.Ui"
+             xmlns:controls="https://github.com/jcsawyer"
              x:Class="Jc.Avalonia.Ui.Sample.Views.Sheets.AddSheet"
              x:DataType="viewModels:AddSheetViewModel">
-    <Panel
-        Height="{Binding ContentHeight, RelativeSource={RelativeSource AncestorType=dialogs:Sheet}}"
-        VerticalAlignment="Top">
+    <Grid
+        VerticalAlignment="Stretch">
         <Grid RowDefinitions="* Auto">
             <TabControl
                 Name="AddTreatmentTabControl"
@@ -28,12 +27,12 @@
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Top"
                             Background="#f3f3f3"
-                            Height="150">
+                            Height="125">
                             <ScrollViewer VerticalAlignment="Stretch" Padding="20 0">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" Spacing="25">
-                                    <Button Background="Transparent" Width="125" Height="125">
+                                    <Button Background="Transparent" Width="125" Height="100">
                                         <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                            <PathIcon Data="{StaticResource barcode_scan}" Width="70" Height="70"
+                                            <PathIcon Data="{StaticResource barcode_scan}" Width="50" Height="50"
                                                       Foreground="#459dd5">
                                             </PathIcon>
                                             <TextBlock Text="Scan a barcode" HorizontalAlignment="Center"
@@ -42,10 +41,10 @@
                                             </TextBlock>
                                         </StackPanel>
                                     </Button>
-                                    <Button Background="Transparent" Width="125" Height="125">
+                                    <Button Background="Transparent" Width="125" Height="100">
                                         <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                            <PathIcon Data="{StaticResource pencil_plus_outline}" Width="55"
-                                                      Height="55"
+                                            <PathIcon Data="{StaticResource pencil_plus_outline}" Width="40"
+                                                      Height="40"
                                                       Foreground="#459dd5">
                                             </PathIcon>
                                             <TextBlock Text="Manual add" HorizontalAlignment="Center" Margin="0 25 0 0"
@@ -58,7 +57,7 @@
                         </Border>
                         <Border
                             Grid.Row="1"
-                            Margin="25 15 25 0">
+                            Margin="10 15 10 0">
                             <TextBox
                                 Name="Search"
                                 Text="{Binding SearchTerm}"
@@ -131,7 +130,7 @@
                     <Grid RowDefinitions="* Auto">
                         <StackPanel>
                             <TimePicker />
-                            <DatePicker />
+                            <ExpandableDatePicker />
                         </StackPanel>
                         <StackPanel Grid.Row="1">
                             <Button Content="Back" Click="Back_OnClick"></Button>
@@ -154,12 +153,12 @@
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Top"
                                 Background="#f3f3f3"
-                                Height="150">
+                                Height="125">
                                 <ScrollViewer VerticalAlignment="Stretch" Padding="20 0">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" Spacing="25">
-                                        <Button Background="Transparent" Width="125" Height="125">
+                                        <Button Background="Transparent" Width="125" Height="100">
                                             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                                <PathIcon Data="{StaticResource nfc_variant}" Width="70" Height="70"
+                                                <PathIcon Data="{StaticResource nfc_variant}" Width="50" Height="50"
                                                           Foreground="#459dd5">
                                                 </PathIcon>
                                                 <TextBlock Text="Scan pen" HorizontalAlignment="Center"
@@ -189,5 +188,5 @@
                 </TabItem>
             </TabControl>
         </Grid>
-    </Panel>
+    </Grid>
 </UserControl>

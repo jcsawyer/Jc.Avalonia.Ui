@@ -7,6 +7,7 @@ using Jc.Avalonia.Ui.Dialogs;
 using Jc.Avalonia.Ui.Sample.Controls;
 using Jc.Avalonia.Ui.Sample.Views;
 using Jc.Avalonia.Ui.Sample.Views.Sheets;
+using Jc.PopupView.Avalonia.Controls;
 using Jc.PopupView.Avalonia.Services;
 using ReactiveUI;
 
@@ -40,6 +41,11 @@ public class MainViewModel : ViewModelBase
 
     private static void Add()
     {
-        new DialogService().OpenSheet(new AddSheet() { DataContext = new AddSheetViewModel() }, sheet => sheet.Padding = Thickness.Parse("0"));
+        new DialogService().OpenSheet(new AddSheet() { DataContext = new AddSheetViewModel() }, sheet =>
+        {
+            sheet.Padding = Thickness.Parse("0");
+            sheet.Margin = Thickness.Parse("0");
+            sheet.ScrollDirection = SheetScrollDirection.None;
+        });
     }
 }

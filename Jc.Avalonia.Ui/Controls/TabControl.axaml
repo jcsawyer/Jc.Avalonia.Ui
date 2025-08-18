@@ -20,7 +20,6 @@
         </Border>
     </Design.PreviewWith>
 
-
     <!--
     Resources moved to BaseResources.axaml to be shared with TabStrip
 
@@ -101,7 +100,6 @@
                 </Border>
             </ControlTemplate>
         </Setter>
-
 
         <Style Selector="^:selected">
             <Setter Property="Background" Value="Transparent" />

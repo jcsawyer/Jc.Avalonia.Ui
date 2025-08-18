@@ -4,18 +4,18 @@
     <Design.PreviewWith>
         <Border Padding="50">
             <StackPanel Spacing="5">
-                <ComboBox>
+                <ExpandableComboBox>
                     <ComboBoxItem Content="Item1" />
                     <ComboBoxItem Content="Item2" />
                     <ComboBoxItem Content="Item3" />
-                </ComboBox>
-                <ComboBox PlaceholderText="Placeholder">
+                </ExpandableComboBox>
+                <ExpandableComboBox PlaceholderText="Placeholder">
                     <ComboBoxItem Content="Item1" />
                     <ComboBoxItem Content="Item2" />
                     <ComboBoxItem Content="Item3" />
-                </ComboBox>
+                </ExpandableComboBox>
 
-                <ComboBox IsEnabled="False" PlaceholderText="Disabled" />
+                <ExpandableComboBox IsEnabled="False" PlaceholderText="Disabled" />
 
                 <Border Height="1" Background="Gray" />
 
