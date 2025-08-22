@@ -4,6 +4,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <MergeResourceInclude Source="/Controls/Button.axaml" />
+                <MergeResourceInclude Source="/Controls/CarouselView.axaml" />
+                <MergeResourceInclude Source="/Controls/CarouselViewItem.axaml" />
+                <MergeResourceInclude Source="/Controls/CarouselViewScrollViewer.axaml" />
                 <MergeResourceInclude Source="/Controls/ComboBox.axaml" />
                 <MergeResourceInclude Source="/Controls/ComboBoxDescribableItem.axaml" />
                 <MergeResourceInclude Source="/Controls/DatePicker.axaml" />

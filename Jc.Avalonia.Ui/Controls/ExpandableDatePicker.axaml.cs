@@ -19,7 +19,7 @@ namespace Jc.Avalonia.Ui.Controls;
 [TemplatePart("PART_SecondSpacer", typeof(Rectangle))]
 [TemplatePart("PART_YearTextBlock", typeof(TextBlock))]
 [PseudoClasses(":hasnodate")]
-public class ExpandableDatePicker : TemplatedControl
+public partial class ExpandableDatePicker : TemplatedControl
 {
     public static readonly StyledProperty<bool> IsDropDownOpenProperty =
         AvaloniaProperty.Register<ExpandableDatePicker, bool>(
