@@ -15,7 +15,7 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia.iOS" Version="11.3.4" />
-        <PackageReference Include="Jc.PopupView.Avalonia.Native.iOS" Version="0.3.300" />
+        <PackageReference Include="Jc.PopupView.Avalonia.Native.iOS" Version="0.3.400" />
     </ItemGroup>
 
     <ItemGroup>
